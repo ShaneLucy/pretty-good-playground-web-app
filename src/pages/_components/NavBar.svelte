@@ -10,12 +10,21 @@
   function handleBurger() {
     show = !show;
   }
+
+  function toggle() {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.body.classList.toggle("light-theme");
+    } else {
+      document.body.classList.toggle("dark-theme");
+    }
+  }
 </script>
 
 <div class="mobile-nav">
   <aside>
     <span class="burger" on:click={handleBurger}>☰</span>
     <span class="title">Pretty Good Playground</span>
+    <button on:click={toggle}>Toggle</button>
   </aside>
   <nav class:show on:click={() => (show = false)}>
     {#each _links as [path, name]}
@@ -42,7 +51,7 @@
     text-align: center;
   }
   nav {
-    background: white;
+    background: var(--light-bg-main);
   }
 
   .link {
@@ -59,12 +68,12 @@
     width: 100vw;
     font-size: 18px;
     padding: 8px;
-    box-shadow: 0px 5px 20px 5px rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 5px 20px 5px var(--light-shadow);
     display: block;
     bottom: 0;
-    color: gray;
-    background-color: white;
-    border-top: 1px solid gray;
+    color: var(--light-text);
+    background-color: var(--light-bg-main);
+    border-top: 1px solid var(--light-border);
     z-index: 10;
   }
 
@@ -82,14 +91,14 @@
   }
 
   a {
-    color: black;
+    color: var(--light-text);
   }
 
   @media (min-width: 640px) {
     nav {
       margin: 32px;
       border-radius: 3vw;
-      box-shadow: 0px 1px 8px 1px rgba(0, 0, 0, 0.6);
+      box-shadow: 0px 1px 8px 1px var(--light-shadow);
       display: inline-block;
       position: relative;
       width: max-content;
@@ -117,17 +126,17 @@
     nav,
     .show,
     .mobile-nav {
-      background-color: #373232;
-      color: #ddd;
+      background-color: var(--dark-bg-main);
+      color: var(--dark-text);
     }
 
     a {
-      color: #ddd;
+      color: var(--dark-text);
     }
 
     @media (min-width: 640px) {
       nav {
-        box-shadow: 0px 2px 10px 2px rgb(0, 0, 0, 1);
+        box-shadow: 0px 2px 10px 2px var(--dark-shadow);
       }
     }
   }

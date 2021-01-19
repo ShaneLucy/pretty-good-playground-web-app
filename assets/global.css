@@ -1,3 +1,19 @@
+:root {
+  --dark-bg-main: #373232;
+  --dark-bg-sub: #444;
+  --dark-heading: #67f063;
+  --dark-text: #ddd;
+  --dark-border: black;
+  --dark-shadow: rgb(0, 0, 0, 1);
+
+  --light-bg-main: white;
+  --light-bg-sub: white;
+  --light-heading: black;
+  --light-text: #646464;
+  --light-border: rgba(0, 0, 0, 0.4);
+  --light-shadow: rgba(0, 0, 0, 0.4);
+}
+
 html,
 body {
   position: relative;
@@ -7,10 +23,18 @@ body {
 
 body {
   margin: 0;
-  padding: 8px;
+  background-color: white;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--light-heading);
 }
 
 a {
@@ -52,7 +76,7 @@ input[type="range"] {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #373232;
+    background-color: var(--dark-bg-main);
   }
 
   h1,
@@ -60,24 +84,94 @@ input[type="range"] {
   h3,
   h4,
   h5 {
-    color: #61d35d;
+    color: var(--dark-heading);
   }
 
   p,
   label,
   textarea {
-    color: #ddd;
+    color: var(--dark-text);
   }
 
   input,
   button,
   select,
   textarea {
-    border-radius: 2px;
-    color: #ddd;
-    background-color: #444;
-    border-radius: 2vw;
-    border-width: 2px;
-    border-color: black;
+    color: var(--dark-text);
+    background-color: var(--dark-bg-sub);
+    border-color: var(--dark-border);
   }
+}
+body.light-theme {
+  background-color: var(--light-bg-main);
+}
+body.dark-theme {
+  background-color: var(--dark-bg-main);
+}
+
+body.dark-theme h1 {
+  color: var(--dark-heading);
+}
+
+body.dark-theme h2 {
+  color: var(--dark-heading);
+}
+body.dark-theme h3 {
+  color: var(--dark-heading);
+}
+body.dark-theme h4 {
+  color: var(--dark-heading);
+}
+body.dark-theme h5 {
+  color: var(--dark-heading);
+}
+
+body.dark-theme p {
+  color: var(--dark-text);
+}
+
+body.dark-theme label {
+  color: var(--dark-text);
+}
+
+body.dark-theme textarea {
+  color: var(--dark-text);
+  background-color: var(--dark-bg-sub);
+  border-color: var(--dark-border);
+}
+body.dark-theme .container {
+  background-color: var(--dark-bg-sub);
+  box-shadow: 0px 2px 10px 2px var(--dark-shadow);
+}
+
+body.dark-theme .header {
+  border-bottom: 2px solid var(--dark-border);
+}
+
+body.dark-theme nav {
+  background-color: var(--dark-bg-main);
+  color: var(--dark-text);
+  box-shadow: 0px 2px 10px 2px var(--dark-shadow);
+}
+
+body.dark-theme .show {
+  background-color: var(--dark-bg-main);
+  color: var(--dark-text);
+}
+
+body.dark-theme .mobile-nav {
+  background-color: var(--dark-bg-main);
+  color: var(--dark-text);
+}
+
+body.dark-theme a {
+  color: var(--dark-text);
+}
+
+body.dark-theme .huge {
+  color: var(--dark-text);
+}
+
+body.dark-theme .big {
+  color: var(--dark-text);
 }

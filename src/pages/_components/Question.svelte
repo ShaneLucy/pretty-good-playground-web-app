@@ -44,7 +44,7 @@
   }
   .header {
     justify-self: start;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid var(--light-border);
   }
 
   .content {
@@ -72,7 +72,7 @@
     padding-top: 3vh;
     padding-bottom: 3vh;
     border-radius: 3vw;
-    box-shadow: 0px 1px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 1px 8px 1px var(--light-shadow);
   }
 
   @media (min-width: 640px) {
@@ -81,9 +81,8 @@
       margin-right: 5vw;
       margin-top: 5vh;
       margin-bottom: 5vh;
-
       border-radius: 1vw;
-      box-shadow: 0px 1px 8px 1px rgba(0, 0, 0, 0.6);
+      box-shadow: 0px 1px 8px 1px var(--light-shadow);
     }
 
     textarea {
@@ -93,11 +92,11 @@
 
   @media (prefers-color-scheme: dark) {
     .container {
-      background-color: #444;
-      box-shadow: 0px 2px 10px 2px rgb(0, 0, 0, 1);
+      background-color: var(--dark-bg-sub);
+      box-shadow: 0px 2px 10px 2px var(--dark-shadow);
     }
     .header {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid var(--dark-border);
     }
   }
 </style>
