@@ -1,7 +1,7 @@
 :root {
   --dark-bg-main: #373232;
   --dark-bg-sub: #444;
-  --dark-heading: #67f063;
+  --dark-heading: #ddd;
   --dark-text: #ddd;
   --dark-border: black;
   --dark-shadow: rgb(0, 0, 0, 1);
@@ -12,7 +12,11 @@
   --light-text: #646464;
   --light-border: rgba(0, 0, 0, 0.4);
   --light-shadow: rgba(0, 0, 0, 0.4);
+
+  --coloured-border: #67f063;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 
 html,
 body {
@@ -37,6 +41,17 @@ h5 {
   color: var(--light-heading);
 }
 
+h4,
+p,
+label,
+textarea {
+  font-family: "JetBrains Mono", monospace;
+}
+
+textarea {
+  caret-color: var(--coloured-border);
+}
+
 a {
   text-decoration: none;
 }
@@ -57,8 +72,6 @@ input,
 button,
 select,
 textarea {
-  font-family: inherit;
-  font-size: inherit;
   padding: 0.4em;
   margin: 0 0 0.5em 0;
   box-sizing: border-box;
@@ -102,9 +115,77 @@ input[type="range"] {
     border-color: var(--dark-border);
   }
 }
+
 body.light-theme {
   background-color: var(--light-bg-main);
 }
+body.light-theme h1 {
+  color: var(--light-heading);
+}
+
+body.light-theme h2 {
+  color: var(--light-heading);
+}
+body.light-theme h3 {
+  color: var(--light-heading);
+}
+body.light-theme h4 {
+  color: var(--light-heading);
+}
+body.light-theme h5 {
+  color: var(--light-heading);
+}
+
+body.light-theme p {
+  color: var(--light-text);
+}
+
+body.light-theme label {
+  color: var(--light-text);
+}
+
+body.light-theme textarea {
+  color: var(--light-text);
+  background-color: var(--light-bg-sub);
+  border-color: var(--light-border);
+}
+body.light-theme .container {
+  background-color: var(--light-bg-sub);
+  box-shadow: 0px 2px 10px 2px var(--light-shadow);
+}
+
+body.light-theme .header {
+  border-bottom: 2px solid var(--light-border);
+}
+
+body.light-theme nav {
+  background-color: var(--light-bg-main);
+  color: var(--light-text);
+  box-shadow: 0px 2px 10px 2px var(--light-shadow);
+}
+
+body.light-theme .show {
+  background-color: var(--light-bg-main);
+  color: var(--light-text);
+}
+
+body.light-theme .mobile-nav {
+  background-color: var(--light-bg-main);
+  color: var(--light-text);
+}
+
+body.light-theme a {
+  color: var(--light-text);
+}
+
+body.light-theme .huge {
+  color: var(--light-text);
+}
+
+body.light-theme .big {
+  color: var(--light-text);
+}
+
 body.dark-theme {
   background-color: var(--dark-bg-main);
 }
