@@ -1,12 +1,10 @@
-import '@testing-library/jest-dom/extend-expect'
-import { render } from '@testing-library/svelte'
+import "@testing-library/jest-dom/extend-expect";
+import { render } from "@testing-library/svelte";
 
-import RoutifyIntro from "../src/pages/example/_components/RoutifyIntro.svelte";
+import Question from "../src/pages/_components/Question.svelte";
 
+test("shows proper heading when rendered", () => {
+  const { getByText } = render(Question);
 
-test('shows proper heading when rendered', () => {
-  const { getByText } = render(RoutifyIntro)
-
-  expect(getByText('Hello World')).toBeInTheDocument()
-})
-
+  expect(getByText("Question: 1")).toBeInTheDocument();
+});

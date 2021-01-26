@@ -5,3 +5,4 @@ sw.js
 ServiceWorker.svelte
 _layout*
 _fallback*
+tests/
