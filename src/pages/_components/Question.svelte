@@ -14,11 +14,8 @@
 {#each questions as question, i}
   {#if (i === 0, i++)}
     <h1>Question: {i}</h1>
-  {:else if i > 1}
-    <h1>Question: {i}</h1>
   {:else}
     <h1>Question: {i}</h1>{/if}
-
   <div class="container">
     <div class="header">
       <h4>{question.name}</h4>
@@ -35,6 +32,7 @@
 {/each}
 
 <style>
+  h1,
   .header,
   .content,
   .footer {
@@ -42,6 +40,7 @@
     margin-right: 5vw;
     margin-bottom: 2vh;
   }
+
   .header {
     justify-self: start;
     border-bottom: 1px solid var(--light-border);
@@ -59,6 +58,7 @@
   label {
     padding-bottom: 1vh;
   }
+
   textarea {
     width: 100%;
     height: 70vw;
@@ -71,8 +71,14 @@
     margin-bottom: 15vh;
     padding-top: 3vh;
     padding-bottom: 3vh;
-    border-radius: 3vw;
+    border-radius: 1.5vw;
     box-shadow: 0px 1px 8px 1px var(--light-shadow);
+    border-right-width: 0.5vw;
+    border-right-style: solid;
+    border-right-color: var(--coloured-border);
+    border-bottom-width: 0.5vw;
+    border-bottom-style: solid;
+    border-bottom-color: var(--coloured-border);
   }
 
   @media (min-width: 640px) {
