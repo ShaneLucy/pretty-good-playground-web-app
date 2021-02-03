@@ -31,7 +31,7 @@
 </script>
 
 {#if $darkMode}
-  <SvgComp on:message={toggle} svg={"moon"} active={false} />
+  <SvgComp on:click={toggle} svg={"moon"} active={false} />
 {:else}
-  <SvgComp on:click on:message={toggle} svg={"sun"} active={false} />
+  <SvgComp on:click={toggle} svg={"sun"} active={false} />
 {/if}
