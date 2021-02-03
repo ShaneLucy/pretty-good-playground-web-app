@@ -39,7 +39,9 @@
           </a>
         </div>
       {/each}
-      <ThemeToggle />
+      <div class="col">
+        <ThemeToggle />
+      </div>
     </div>
   </nav>
 </aside>
@@ -116,8 +118,6 @@
     }
 
     .link {
-      margin-right: 5vw;
-      margin-left: 5vw;
       display: inline-block;
       padding-bottom: 2vh;
     }
@@ -128,6 +128,11 @@
 
     .pt-2 {
       padding-top: 0vh;
+    }
+
+    .col {
+      margin-right: 5vw;
+      margin-left: 5vw;
     }
   }
 
