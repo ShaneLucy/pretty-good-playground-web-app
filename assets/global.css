@@ -5,6 +5,7 @@
   --dark-text: #ddd;
   --dark-border: black;
   --dark-shadow: rgb(0, 0, 0, 1);
+  --dark-error-text: #ee8484;
 
   --light-bg-main: white;
   --light-bg-sub: white;
@@ -12,6 +13,7 @@
   --light-text: #646464;
   --light-border: rgba(0, 0, 0, 0.4);
   --light-shadow: rgba(0, 0, 0, 0.4);
+  --light-error-text: #ee0101;
 
   --coloured-border: #67f063;
 }
@@ -154,6 +156,11 @@ body.light-theme textarea {
   background-color: var(--light-bg-sub);
   border-color: var(--light-border);
 }
+
+body.light-theme .error {
+  color: var(--light-error-text);
+}
+
 body.light-theme .card {
   background-color: var(--light-bg-sub);
   box-shadow: 0px 2px 10px 2px var(--light-shadow);
@@ -193,6 +200,10 @@ body.light-theme .big {
 
 body.dark-theme {
   background-color: var(--dark-bg-main);
+}
+
+body.dark-theme .error {
+  color: var(--dark-error-text);
 }
 
 body.dark-theme h1 {
