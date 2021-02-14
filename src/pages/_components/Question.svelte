@@ -82,8 +82,6 @@
 
   .card {
     margin-top: 5vh;
-    margin-left: 7.5vw;
-    margin-right: 7.5vw;
     margin-bottom: 15vh;
     padding-top: 3vh;
     padding-bottom: 3vh;

@@ -87,6 +87,11 @@ input[type="range"] {
   height: 0;
 }
 
+.container {
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: var(--dark-bg-main);
@@ -149,7 +154,7 @@ body.light-theme textarea {
   background-color: var(--light-bg-sub);
   border-color: var(--light-border);
 }
-body.light-theme .container {
+body.light-theme .card {
   background-color: var(--light-bg-sub);
   box-shadow: 0px 2px 10px 2px var(--light-shadow);
 }
@@ -220,7 +225,7 @@ body.dark-theme textarea {
   background-color: var(--dark-bg-sub);
   border-color: var(--dark-border);
 }
-body.dark-theme .container {
+body.dark-theme .card {
   background-color: var(--dark-bg-sub);
   box-shadow: 0px 2px 10px 2px var(--dark-shadow);
 }

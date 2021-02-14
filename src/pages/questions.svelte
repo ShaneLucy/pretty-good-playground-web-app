@@ -4,4 +4,6 @@
 </script>
 
 <NavBar />
-<Question />
+<div class="container">
+  <Question />
+</div>
