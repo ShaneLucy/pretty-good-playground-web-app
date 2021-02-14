@@ -1,48 +1,70 @@
 <script>
-  export let questions = [
-    {
-      name: "What is PGP",
-      answer: "ans1",
-    },
-    {
-      name: "qs2",
-      answer: "ans2",
-    },
-    {
-      name: "qs2",
-      answer: "ans2",
-    },
-    {
-      name: "qs2",
-      answer: "ans2",
-    },
-    {
-      name: "qs2",
-      answer: "ans2",
-    },
-    {
-      name: "qs2",
-      answer: "ans2",
-    },
-  ];
+  export let questions = [];
+  import { createEventDispatcher } from "svelte";
+  import { fade } from "svelte/transition";
+  const dispatch = createEventDispatcher();
+
+  function submit(question) {
+    if (validate(question)) {
+      dispatch("click", {
+        text: question,
+      });
+    }
+  }
+
+  function validate(question) {
+    if (questions[question - 1].submittedAnswer.length === 0) {
+      questions[question - 1].error.status = true;
+      questions[question - 1].error.message = "Required";
+    }
+    if (questions[question - 1].submittedAnswer.length > 0) {
+      questions[question - 1].error.status = false;
+    }
+
+    return questions[question - 1].submittedAnswer.length > 0 ? true : false;
+  }
 </script>
 
-{#each questions as question, i}
+{#each questions as question}
   <div class="card">
-    {#if (i === 0, i++)}
-      <h2>Question: {i}</h2>
-    {:else}
-      <h2>Question: {i}</h2>{/if}
-    <div class="header">
-      <h4>{question.name}</h4>
-    </div>
-    <div class="content">
-      <label for="answer">Enter your Answer to Proceed:</label>
-      <textarea name="answer" placeholder="Enter Your Answer" />
-    </div>
+    <h2>Question: {question.number}</h2>
+    <form>
+      <div class="header">
+        <h4>{question.name}</h4>
+      </div>
+      {#if !question.completed}
+        <div if class="content">
+          <label for="answer">Enter your Answer to Proceed:</label>
+          <div class="error-container">
+            {#if question.error.status}
+              <span transition:fade aria-live="polite" class="error"
+                >{question.error.message}</span
+              >
+            {/if}
+            {#if question.incorrect}
+              <span transition:fade aria-live="polite" class="error"
+                >Incorrect</span
+              >
+            {/if}
+          </div>
+          <textarea
+            bind:value={question.submittedAnswer}
+            name="answer"
+            id="test"
+            on:input={validate(question.number)}
+            required
+            placeholder="Enter Your Answer"
+          />
+        </div>
+      {/if}
+    </form>
     <div class="footer">
-      <p>Attempts:</p>
-      <p>Correct:</p>
+      <p>Attempts: {question.attempts}</p>
+      {#if !question.completed}
+        <button on:click={submit(question.number)}>Submit</button>
+      {:else}
+        <p>ok</p>
+      {/if}
     </div>
   </div>
 {/each}
@@ -71,6 +93,15 @@
     justify-content: space-between;
   }
 
+  .error-container {
+    height: 5vh;
+  }
+
+  .error {
+    font-size: 1.4em;
+    padding-bottom: 2vh;
+  }
+
   label {
     padding-bottom: 1vh;
   }
@@ -78,6 +109,10 @@
   textarea {
     width: 100%;
     height: 70vw;
+  }
+
+  textarea:valid {
+    border-color: var(--coloured-border);
   }
 
   .card {
@@ -123,8 +158,13 @@
       background-color: var(--dark-bg-sub);
       box-shadow: 0px 2px 10px 2px var(--dark-shadow);
     }
+
     .header {
       border-bottom: 2px solid var(--dark-border);
+    }
+
+    .error {
+      color: var(--dark-error-text);
     }
   }
 </style>
