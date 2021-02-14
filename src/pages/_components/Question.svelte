@@ -8,15 +8,31 @@
       name: "qs2",
       answer: "ans2",
     },
+    {
+      name: "qs2",
+      answer: "ans2",
+    },
+    {
+      name: "qs2",
+      answer: "ans2",
+    },
+    {
+      name: "qs2",
+      answer: "ans2",
+    },
+    {
+      name: "qs2",
+      answer: "ans2",
+    },
   ];
 </script>
 
 {#each questions as question, i}
-  {#if (i === 0, i++)}
-    <h1>Question: {i}</h1>
-  {:else}
-    <h1>Question: {i}</h1>{/if}
-  <div class="container">
+  <div class="card">
+    {#if (i === 0, i++)}
+      <h2>Question: {i}</h2>
+    {:else}
+      <h2>Question: {i}</h2>{/if}
     <div class="header">
       <h4>{question.name}</h4>
     </div>
@@ -32,7 +48,7 @@
 {/each}
 
 <style>
-  h1,
+  h2,
   .header,
   .content,
   .footer {
@@ -64,10 +80,10 @@
     height: 70vw;
   }
 
-  .container {
-    margin-left: 2vw;
-    margin-right: 2vw;
+  .card {
     margin-top: 5vh;
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
     margin-bottom: 15vh;
     padding-top: 3vh;
     padding-bottom: 3vh;
@@ -82,7 +98,15 @@
   }
 
   @media (min-width: 640px) {
-    .container {
+    h2,
+    .header,
+    .content,
+    .footer {
+      margin-left: 2.5vw;
+      margin-right: 2.55vw;
+    }
+
+    .card {
       margin-left: 5vw;
       margin-right: 5vw;
       margin-top: 5vh;
@@ -97,7 +121,7 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    .container {
+    .card {
       background-color: var(--dark-bg-sub);
       box-shadow: 0px 2px 10px 2px var(--dark-shadow);
     }
