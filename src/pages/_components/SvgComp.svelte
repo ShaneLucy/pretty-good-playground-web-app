@@ -93,6 +93,5 @@
 <style>
   .active {
     font-weight: bold;
-    color: var(--coloured-border);
   }
 </style>
