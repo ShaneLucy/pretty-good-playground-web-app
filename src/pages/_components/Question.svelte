@@ -2,8 +2,13 @@
   export let questions = [];
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
+  import SvgComp from "./SvgComp.svelte";
   const dispatch = createEventDispatcher();
 
+  /**
+   *
+   * @param {number}question
+   */
   function submit(question) {
     if (validate(question)) {
       dispatch("click", {
@@ -12,6 +17,11 @@
     }
   }
 
+  /**
+   *
+   * @param {number} question
+   * @return boolean
+   */
   function validate(question) {
     if (questions[question - 1].submittedAnswer.length === 0) {
       questions[question - 1].error.status = true;
@@ -33,7 +43,7 @@
         <h4>{question.name}</h4>
       </div>
       {#if !question.completed}
-        <div if class="content">
+        <div transition:fade class="content">
           <label for="answer">Enter your Answer to Proceed:</label>
           <div class="error-container">
             {#if question.error.status}
@@ -50,7 +60,6 @@
           <textarea
             bind:value={question.submittedAnswer}
             name="answer"
-            id="test"
             on:input={validate(question.number)}
             required
             placeholder="Enter Your Answer"
@@ -58,14 +67,17 @@
         </div>
       {/if}
     </form>
-    <div class="footer">
-      <p>Attempts: {question.attempts}</p>
-      {#if !question.completed}
+    {#if !question.completed}
+      <div class="footer baseline">
+        <p>Attempts: {question.attempts}</p>
         <button on:click={submit(question.number)}>Submit</button>
-      {:else}
-        <p>ok</p>
-      {/if}
-    </div>
+      </div>
+    {:else}
+      <div class="footer center">
+        <p>Attempts: {question.attempts}</p>
+        <SvgComp svg={"tick"} active="false" />
+      </div>
+    {/if}
   </div>
 {/each}
 
@@ -93,6 +105,14 @@
     justify-content: space-between;
   }
 
+  .baseline {
+    align-items: baseline;
+  }
+
+  .center {
+    align-items: center;
+  }
+
   .error-container {
     height: 5vh;
   }
@@ -100,6 +120,7 @@
   .error {
     font-size: 1.4em;
     padding-bottom: 2vh;
+    color: var(--light-error-text);
   }
 
   label {
@@ -113,6 +134,18 @@
 
   textarea:valid {
     border-color: var(--coloured-border);
+  }
+
+  button {
+    background-color: var(--dark-bg-heading);
+    border-color: var(--light-heading);
+    color: var(--light-heading);
+    font-size: 1.4rem;
+  }
+
+  button:hover {
+    background-color: var(--dark-bg-sub);
+    color: var(--dark-text);
   }
 
   .card {
