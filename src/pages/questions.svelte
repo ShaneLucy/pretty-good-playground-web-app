@@ -3,6 +3,14 @@
   import Question from "./_components/Question.svelte";
   import { tick } from "svelte";
   import * as openpgp from "openpgp";
+  import Progress from "./_components/Progress.svelte";
+  import { percentage } from "../stores";
+
+  function stuff() {
+    percentage.update((n) => n + 0.1);
+    console.log($percentage);
+    window.localStorage.setItem("score", $percentage);
+  }
 
   let questions = [
     {
@@ -104,6 +112,10 @@
 </script>
 
 <NavBar />
+{#key $percentage}
+  <Progress />
+{/key}
+<button on: on:click={stuff}>Click me</button>
 <div class="container">
   <Question {questions} on:click={submit} />
 </div>
