@@ -78,7 +78,14 @@ textarea {
   margin: 0 0 0.5em 0;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 1.5vw;
+}
+
+input,
+button,
+select,
+textarea:hover {
+  cursor: pointer;
 }
 
 input:disabled {
@@ -92,6 +99,15 @@ input[type="range"] {
 .container {
   margin-left: 7.5vw;
   margin-right: 7.5vw;
+}
+
+@media (min-width: 640px) {
+  input,
+  button,
+  select,
+  textarea {
+    border-radius: 1vw;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -126,6 +142,7 @@ input[type="range"] {
 body.light-theme {
   background-color: var(--light-bg-main);
 }
+
 body.light-theme h1 {
   color: var(--light-heading);
 }
@@ -133,12 +150,15 @@ body.light-theme h1 {
 body.light-theme h2 {
   color: var(--light-heading);
 }
+
 body.light-theme h3 {
   color: var(--light-heading);
 }
+
 body.light-theme h4 {
   color: var(--light-heading);
 }
+
 body.light-theme h5 {
   color: var(--light-heading);
 }
@@ -155,6 +175,25 @@ body.light-theme textarea {
   color: var(--light-text);
   background-color: var(--light-bg-sub);
   border-color: var(--light-border);
+}
+
+body.light-theme button {
+  background-color: var(--dark-bg-heading);
+  border-color: var(--light-heading);
+  color: var(--light-heading);
+}
+
+body.light-theme button:hover {
+  background-color: var(--dark-bg-sub);
+  color: var(--dark-text);
+}
+
+body.light-theme .progress .chart-progress .back {
+  stroke: var(--light-text);
+}
+
+body.light-theme .progress .chart-progress .text {
+  fill: var(--light-heading);
 }
 
 body.light-theme .error {
@@ -213,12 +252,15 @@ body.dark-theme h1 {
 body.dark-theme h2 {
   color: var(--dark-heading);
 }
+
 body.dark-theme h3 {
   color: var(--dark-heading);
 }
+
 body.dark-theme h4 {
   color: var(--dark-heading);
 }
+
 body.dark-theme h5 {
   color: var(--dark-heading);
 }
@@ -236,6 +278,26 @@ body.dark-theme textarea {
   background-color: var(--dark-bg-sub);
   border-color: var(--dark-border);
 }
+
+body.dark-theme button {
+  background-color: var(--dark-bg-sub);
+  border-color: var(--dark-text);
+  color: var(--dark-text);
+}
+
+body.dark-theme button:hover {
+  background-color: var(--light-bg-main);
+  color: var(--light-heading);
+}
+
+body.dark-theme .progress .chart-progress .back {
+  stroke: var(--dark-heading);
+}
+
+body.dark-theme .progress .chart-progress .text {
+  fill: var(--dark-heading);
+}
+
 body.dark-theme .card {
   background-color: var(--dark-bg-sub);
   box-shadow: 0px 2px 10px 2px var(--dark-shadow);
