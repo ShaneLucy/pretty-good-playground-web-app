@@ -1,6 +1,9 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
   import { metatags } from "@roxi/routify";
+  import SvgComp from "../pages/_components/SvgComp.svelte";
+  import { darkMode } from "../stores";
+
   metatags.title = "Pretty Good Playground";
   metatags.description = "An app to learn about and test your knowledge on PGP";
   metatags.author = "Shane Lucy";
@@ -19,18 +22,28 @@
     When I started using pgp I quickly realised there wasn't a decent, fun,
     interactive method to test that I was actually using pgp properly. Which
     lead me to create this website. All cryptography is handled in the browser
-    using <a class="external" href="https://github.com/openpgpjs/openpgpjs"
-      >OpenPGP.js</a
+    using <a
+      class="external"
+      href="https://github.com/openpgpjs/openpgpjs"
+      target="_blank">OpenPGP.js</a
     >
   </p>
   <p>
     <a
       class="external"
       href="https://github.com/ShaneLucy/pretty-good-playground"
+      target="_blank"
     >
       This website is open source, feel free to view it
     </a>
   </p>
+  <a href="https://www.buymeacoffee.com/shanelucy" target="_blank">
+    {#if $darkMode}
+      <SvgComp svg={"bmcDark"} active="false" />
+    {:else}
+      <SvgComp svg={"bmcLight"} active="false" />
+    {/if}
+  </a>
 </div>
 
 <style>
