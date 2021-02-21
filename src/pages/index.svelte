@@ -2,7 +2,14 @@
   import NavBar from "./_components/NavBar.svelte";
   import { metatags } from "@roxi/routify";
   metatags.title = "Pretty Good Playground";
-  metatags.description = "Description coming soon...";
+  metatags.description = "An app to learn about and test your knowledge on PGP";
+  metatags.author = "Shane Lucy";
+  metatags["og:url"] = "";
+  metatags["og:image"] = "";
+  metatags["og:image:type"] = "";
+  metatags["og:image:width"] = "";
+  metatags["og:image:height"] = "";
+  metatags["og:image:alt"] = "";
 </script>
 
 <NavBar />
