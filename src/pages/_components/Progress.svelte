@@ -2,7 +2,8 @@
   import { percentage } from "../../stores";
   import { onMount } from "svelte";
   const i = $percentage * 100;
-  const progress = 565 - 565 * $percentage;
+  // progress bar radius = 2 * PI * R =  286
+  const progress = 286 - 286 * $percentage;
 
   onMount(() => {
     if (window.localStorage.getItem("score") !== null) {
@@ -12,24 +13,22 @@
 </script>
 
 <div class="progress">
-  <svg width="200" height="200" class="chart-progress">
-    <circle cx="100" cy="100" r="90" class="back" fill="none" />
+  <svg width="100" height="100" class="chart-progress">
+    <circle cx="50" cy="50" r="45" class="back" fill="none" />
     <circle
-      cx="100"
-      cy="100"
-      r="90"
+      cx="50"
+      cy="50"
+      r="45"
       :bind:value={progress}
       style="stroke-dashoffset:{progress}"
       class="front"
       fill="none"
+      title="outer"
+      role=""
     />
     <g class="text">
-      <text
-        x="100"
-        y="100"
-        alignment-baseline="central"
-        text-anchor="middle"
-        id="percentage">{i}%</text
+      <text x="50" y="50" alignment-baseline="central" text-anchor="middle"
+        >{i}%</text
       >
     </g>
   </svg>
@@ -37,27 +36,30 @@
 
 <style>
   .progress {
-    display: flex;
-    justify-content: center;
+    position: sticky;
+    bottom: 0;
   }
+
   .progress .chart-progress {
     padding: 10px;
   }
-  .progress .chart-progress .back {
+
+  .back {
     stroke: var(--light-text);
-    stroke-width: 10;
+    stroke-width: 5;
   }
-  .progress .chart-progress .front {
+
+  .front {
     stroke: var(--coloured-border);
-    stroke-width: 10;
+    stroke-width: 5;
     stroke-linecap: round;
-    stroke-dasharray: 565;
+    stroke-dasharray: 286;
     transform: rotate(-90deg);
     transform-origin: center;
   }
 
-  .progress .chart-progress .text {
-    font-size: 2.5rem;
+  .text {
+    font-weight: bold;
     fill: var(--light-heading);
   }
 
@@ -67,7 +69,7 @@
 
   @keyframes fill {
     to {
-      stroke-dasharray: 0, 566;
+      stroke-dasharray: 0, 287;
     }
   }
 
@@ -80,11 +82,11 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    .progress .chart-progress .text {
+    .text {
       fill: var(--dark-heading);
     }
 
-    .progress .chart-progress .back {
+    .back {
       stroke: var(--dark-heading);
     }
   }
