@@ -1,7 +1,7 @@
 <script>
   export let questions = [];
   import { createEventDispatcher } from "svelte";
-  import { fade } from "svelte/transition";
+  import { fade, blur } from "svelte/transition";
   import SvgComp from "./SvgComp.svelte";
   const dispatch = createEventDispatcher();
 
@@ -43,7 +43,7 @@
         <h4>{question.name}</h4>
       </div>
       {#if !question.completed}
-        <div transition:fade class="content">
+        <div transition:blur={{ amount: 10, duration: 1000 }} class="content">
           <label for="answer">Enter your Answer to Proceed:</label>
           <div class="error-container">
             {#if question.error.status}
