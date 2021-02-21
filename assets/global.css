@@ -6,6 +6,7 @@
   --dark-border: black;
   --dark-shadow: rgb(0, 0, 0, 1);
   --dark-error-text: #ee8484;
+  --dark-external-link: #49c3ff;
 
   --light-bg-main: white;
   --light-bg-sub: white;
@@ -15,6 +16,7 @@
   --light-shadow: rgba(0, 0, 0, 0.4);
   --light-error-text: #ee0101;
 
+  --light-external-link: #0875aa;
   --coloured-border: #67f063;
 }
 
@@ -46,7 +48,8 @@ h5 {
 h4,
 p,
 label,
-textarea {
+textarea,
+blockquote {
   font-family: "JetBrains Mono", monospace;
 }
 
@@ -60,10 +63,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-a:visited {
-  color: rgb(0, 80, 160);
 }
 
 label {
@@ -125,7 +124,8 @@ input[type="range"] {
 
   p,
   label,
-  textarea {
+  textarea,
+  blockquote {
     color: var(--dark-text);
   }
 
@@ -167,7 +167,8 @@ body.light-theme p {
   color: var(--light-text);
 }
 
-body.light-theme label {
+body.light-theme label,
+body.light-theme blockquote {
   color: var(--light-text);
 }
 
@@ -229,6 +230,11 @@ body.light-theme a {
   color: var(--light-text);
 }
 
+body.light-theme a.external {
+  text-decoration: underline;
+  color: var(--light-external-link);
+}
+
 body.light-theme .huge {
   color: var(--light-text);
 }
@@ -269,7 +275,8 @@ body.dark-theme p {
   color: var(--dark-text);
 }
 
-body.dark-theme label {
+body.dark-theme label,
+body.dark-theme blockquote {
   color: var(--dark-text);
 }
 
@@ -325,6 +332,10 @@ body.dark-theme .mobile-nav {
 
 body.dark-theme a {
   color: var(--dark-text);
+}
+
+body.dark-theme a.external {
+  color: var(--dark-external-link);
 }
 
 body.dark-theme .huge {
