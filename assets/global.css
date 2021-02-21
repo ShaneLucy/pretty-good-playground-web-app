@@ -143,32 +143,20 @@ body.light-theme {
   background-color: var(--light-bg-main);
 }
 
-body.light-theme h1 {
-  color: var(--light-heading);
-}
-
-body.light-theme h2 {
-  color: var(--light-heading);
-}
-
-body.light-theme h3 {
-  color: var(--light-heading);
-}
-
-body.light-theme h4 {
-  color: var(--light-heading);
-}
-
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
 body.light-theme h5 {
   color: var(--light-heading);
 }
 
-body.light-theme p {
-  color: var(--light-text);
-}
-
+body.light-theme p,
 body.light-theme label,
-body.light-theme blockquote {
+body.light-theme blockquote,
+body.light-theme .huge,
+body.light-theme .big,
+body.light-theme a {
   color: var(--light-text);
 }
 
@@ -226,23 +214,11 @@ body.light-theme .mobile-nav {
   color: var(--light-text);
 }
 
-body.light-theme a {
-  color: var(--light-text);
-}
-
 body.light-theme a.external {
-  text-decoration: underline;
   color: var(--light-external-link);
 }
 
-body.light-theme .huge {
-  color: var(--light-text);
-}
-
-body.light-theme .big {
-  color: var(--light-text);
-}
-
+/* dark mode globals */
 body.dark-theme {
   background-color: var(--dark-bg-main);
 }
@@ -251,32 +227,20 @@ body.dark-theme .error {
   color: var(--dark-error-text);
 }
 
-body.dark-theme h1 {
-  color: var(--dark-heading);
-}
-
-body.dark-theme h2 {
-  color: var(--dark-heading);
-}
-
-body.dark-theme h3 {
-  color: var(--dark-heading);
-}
-
-body.dark-theme h4 {
-  color: var(--dark-heading);
-}
-
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
 body.dark-theme h5 {
   color: var(--dark-heading);
 }
 
-body.dark-theme p {
-  color: var(--dark-text);
-}
-
+body.dark-theme p,
 body.dark-theme label,
-body.dark-theme blockquote {
+body.dark-theme blockquote,
+body.dark-theme .huge,
+body.dark-theme .big,
+body.dark-theme a {
   color: var(--dark-text);
 }
 
@@ -295,14 +259,6 @@ body.dark-theme button {
 body.dark-theme button:hover {
   background-color: var(--light-bg-main);
   color: var(--light-heading);
-}
-
-body.dark-theme .progress .chart-progress .back {
-  stroke: var(--dark-heading);
-}
-
-body.dark-theme .progress .chart-progress .text {
-  fill: var(--dark-heading);
 }
 
 body.dark-theme .card {
@@ -330,18 +286,14 @@ body.dark-theme .mobile-nav {
   color: var(--dark-text);
 }
 
-body.dark-theme a {
-  color: var(--dark-text);
+body.dark-theme .progress .chart-progress .back {
+  stroke: var(--dark-heading);
+}
+
+body.dark-theme .progress .chart-progress .text {
+  fill: var(--dark-heading);
 }
 
 body.dark-theme a.external {
   color: var(--dark-external-link);
-}
-
-body.dark-theme .huge {
-  color: var(--dark-text);
-}
-
-body.dark-theme .big {
-  color: var(--dark-text);
 }
