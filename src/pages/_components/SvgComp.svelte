@@ -119,6 +119,58 @@
   >
 {/if}
 
+{#if svg === "btc"}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Bitcoin"
+    role="img"
+    viewBox="0 0 512 512"
+  >
+    <title>Bitcoin</title>
+    <rect width="512" height="512" rx="15%" fill="#f7931a" /><path
+      fill="#fff"
+      d="m391 216c6-43-25-64-68-79l14-55-34-9-13 54-28-7 14-54-35-9-13 56-22-5-47-12-8 36 24 6c14 4 17 14 15 21l-15 63 3 1-3-1-22 89c-2 5-6 11-16 8l-24-6-17 39 68 17-13 57 33 8 14-55 26 6-13 55 34 9 14-56c58 11 102 6 120-46 14-42-1-66-32-82 22-5 39-20 44-49zm-77 108c-11 41-82 20-105 14l19-75c23 6 97 17 86 61zm9-110c-9 39-67 20-87 15l17-68c20 5 81 14 70 53z"
+    /></svg
+  >
+{/if}
+
+{#if svg === "xmr"}
+  <svg
+    width="2500"
+    height="2500"
+    viewBox="0 0 256 256"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid"
+  >
+    <title>Monero</title>
+    <path
+      d="M127.998 0C57.318 0 0 57.317 0 127.999c0 14.127 2.29 27.716 6.518 40.43H44.8V60.733l83.2 83.2 83.198-83.2v107.695h38.282c4.231-12.714 6.521-26.303 6.521-40.43C256 57.314 198.681 0 127.998 0"
+      fill="#F60"
+    /><path
+      d="M108.867 163.062l-36.31-36.311v67.765H18.623c22.47 36.863 63.051 61.48 109.373 61.48s86.907-24.617 109.374-61.48h-53.933V126.75l-36.31 36.31-19.13 19.129-19.128-19.128h-.002z"
+      fill="#4C4C4C"
+    /></svg
+  >
+{/if}
+
+{#if svg === "sidebar"}
+  <svg
+    class="w-6 h-6"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>Sidebar Menu</title>
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"
+    /></svg
+  >
+{/if}
+
 {#if svg === "bmcLight"}
   <svg
     width="4169"

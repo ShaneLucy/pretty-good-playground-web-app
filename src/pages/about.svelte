@@ -1,5 +1,6 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
+  import Footer from "./_components/Footer.svelte";
 </script>
 
 <NavBar />
@@ -39,3 +40,4 @@
     e-mails - as well as managing keys.
   </blockquote>
 </div>
+<Footer />

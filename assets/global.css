@@ -7,6 +7,7 @@
   --dark-shadow: rgb(0, 0, 0, 1);
   --dark-error-text: #ee8484;
   --dark-external-link: #49c3ff;
+  --dark-footer-bg: #555;
 
   --light-bg-main: white;
   --light-bg-sub: white;
@@ -15,8 +16,9 @@
   --light-border: rgba(0, 0, 0, 0.4);
   --light-shadow: rgba(0, 0, 0, 0.4);
   --light-error-text: #ee0101;
-
   --light-external-link: #0875aa;
+  --light-footer-bg: gainsboro;
+
   --coloured-border: #67f063;
 }
 
@@ -218,6 +220,14 @@ body.light-theme a.external {
   color: var(--light-external-link);
 }
 
+body.light-theme footer {
+  background-color: var(--light-footer-bg);
+}
+
+body.light-theme footer > .container > .col > .row > p {
+  color: var(--light-heading);
+}
+
 /* dark mode globals */
 body.dark-theme {
   background-color: var(--dark-bg-main);
@@ -296,4 +306,12 @@ body.dark-theme .progress .chart-progress .text {
 
 body.dark-theme a.external {
   color: var(--dark-external-link);
+}
+
+body.dark-theme footer {
+  background-color: var(--dark-footer-bg);
+}
+
+body.dark-theme footer > .container > .col > .row > p {
+  color: var(--dark-text);
 }

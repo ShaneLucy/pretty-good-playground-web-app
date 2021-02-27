@@ -1,8 +1,8 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
+  import Footer from "./_components/Footer.svelte";
+
   import { metatags } from "@roxi/routify";
-  import SvgComp from "../pages/_components/SvgComp.svelte";
-  import { darkMode } from "../stores";
 
   metatags.title = "Pretty Good Playground";
   metatags.description = "An app to learn about and test your knowledge on PGP";
@@ -37,14 +37,8 @@
       This website is open source, feel free to view it
     </a>
   </p>
-  <a href="https://www.buymeacoffee.com/shanelucy" target="_blank">
-    {#if $darkMode}
-      <SvgComp svg={"bmcDark"} active="false" />
-    {:else}
-      <SvgComp svg={"bmcLight"} active="false" />
-    {/if}
-  </a>
 </div>
+<Footer />
 
 <style>
   p {
