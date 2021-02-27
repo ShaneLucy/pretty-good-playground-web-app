@@ -103,7 +103,6 @@
 
 {#if svg === "tick"}
   <svg
-    class="w-6 h-6"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -153,13 +152,14 @@
   >
 {/if}
 
-{#if svg === "sidebar"}
+{#if svg === "sidemenu"}
   <svg
-    class="w-6 h-6"
+    class="side-menu-icon nav"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
+    on:click={callParentFunction}
   >
     <title>Sidebar Menu</title>
     <path
@@ -167,6 +167,25 @@
       stroke-linejoin="round"
       stroke-width="2"
       d="M4 6h16M4 12h16M4 18h16"
+    /></svg
+  >
+{/if}
+
+{#if svg === "x"}
+  <svg
+    class="nav"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    on:click={callParentFunction}
+  >
+    <title>Close Menu</title>
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M6 18L18 6M6 6l12 12"
     /></svg
   >
 {/if}
@@ -375,17 +394,21 @@
 
   .bmc {
     width: 35vw;
-    height: 35vh;
+    height: 12.5vh;
   }
 
   @media (min-width: 640px) {
+    .side-menu-icon {
+      display: none;
+    }
+
     .nav {
       width: 2.5vw;
       height: 2.5vw;
     }
 
     .bmc {
-      width: 15vw;
+      width: 25vw;
       height: 15vh;
     }
   }

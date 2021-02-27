@@ -1,6 +1,9 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
   import Footer from "./_components/Footer.svelte";
+  import SvgComp from "./_components/SvgComp.svelte";
+  import SideMenu from "./_components/SideMenu.svelte";
+  import { sideMenuOpen, sideMenuClosed } from "../stores";
 
   import { metatags } from "@roxi/routify";
 
@@ -16,6 +19,19 @@
 </script>
 
 <NavBar />
+<div class="side-menu-icon-wrapper">
+  {#if $sideMenuClosed}
+    <SvgComp
+      on:click={() => ($sideMenuOpen = true)}
+      svg={"sidemenu"}
+      active="false"
+    />
+  {/if}
+</div>
+
+{#if $sideMenuOpen}
+  <SideMenu />
+{/if}
 <div class="container">
   <h1>Home</h1>
   <p>
