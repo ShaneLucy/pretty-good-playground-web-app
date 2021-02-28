@@ -14,7 +14,6 @@
   });
 </script>
 
-/*eslint-disable*/
 <aside transition:fade class="side-menu">
   <div class="container">
     <div class="header">
