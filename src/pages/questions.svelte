@@ -1,10 +1,12 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
   import Question from "./_components/Question.svelte";
+  import Progress from "./_components/Progress.svelte";
+  import Footer from "./_components/Footer.svelte";
+  import { percentage } from "../stores";
   import { tick } from "svelte";
   import * as openpgp from "openpgp";
-  import Progress from "./_components/Progress.svelte";
-  import { percentage } from "../stores";
+  import { fade, slide } from "svelte/transition";
 
   function stuff() {
     percentage.update((n) => n + 0.1);
@@ -85,37 +87,55 @@
       userIds: [{ name: "Test", email: "test@test.com" }],
     });
     console.log(key);
-    // put keys in backtick (``) to avoid errors caused by spaces or tabs
-    const publicKeyArmored = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-    ...
-    -----END PGP PUBLIC KEY BLOCK-----`;
-    const privateKeyArmored = `-----BEGIN PGP PRIVATE KEY BLOCK-----
-    ...
-    -----END PGP PRIVATE KEY BLOCK-----`; // encrypted private key
-    const passphrase = `yourPassphrase`; // what the private key is encrypted with
-    const privateKey = await openpgp.readArmored(privateKeyArmored);
-    await privateKey.decrypt(passphrase);
-    const encrypted = await openpgp.encrypt({
-      message: openpgp.Message.fromText("Hello, World!"), // input as Message object
-      publicKeys: await openpgp.readArmoredKey(publicKeyArmored), // for encryption
-      privateKeys: privateKey, // for signing (optional)
-    });
-    console.log(encrypted); // '-----BEGIN PGP MESSAGE ... END PGP MESSAGE-----'
-    const { data: decrypted } = await openpgp.decrypt({
-      message: await openpgp.readArmoredMessage(encrypted), // parse armored message
-      publicKeys: await openpgp.readArmoredKey(publicKeyArmored), // for verification (optional)
-      privateKeys: privateKey, // for decryption
-    });
-    console.log(decrypted);
+    // // put keys in backtick (``) to avoid errors caused by spaces or tabs
+    // const publicKeyArmored = `-----BEGIN PGP PUBLIC KEY BLOCK-----
+    // ...
+    // -----END PGP PUBLIC KEY BLOCK-----`;
+    // const privateKeyArmored = `-----BEGIN PGP PRIVATE KEY BLOCK-----
+    // ...
+    // -----END PGP PRIVATE KEY BLOCK-----`; // encrypted private key
+    // const passphrase = `yourPassphrase`; // what the private key is encrypted with
+    // // const privateKey = await openpgp.readArmored(privateKeyArmored);
+    // await privateKey.decrypt(passphrase);
+    // const encrypted = await openpgp.encrypt({
+    //   message: openpgp.Message.fromText("Hello, World!"), // input as Message object
+    //   publicKeys: await openpgp.readArmoredKey(publicKeyArmored), // for encryption
+    //   privateKeys: privateKey, // for signing (optional)
+    // });
+    // console.log(encrypted); // '-----BEGIN PGP MESSAGE ... END PGP MESSAGE-----'
+    // const { data: decrypted } = await openpgp.decrypt({
+    //   message: await openpgp.readArmoredMessage(encrypted), // parse armored message
+    //   publicKeys: await openpgp.readArmoredKey(publicKeyArmored), // for verification (optional)
+    //   privateKeys: privateKey, // for decryption
+    // });
+    // console.log(decrypted);
   };
   encrypt();
 </script>
 
-<NavBar />
-{#key $percentage}
-  <Progress />
-{/key}
-<button on: on:click={stuff}>Click me</button>
-<div class="container">
-  <Question {questions} on:click={submit} />
+<div
+  in:fade={{ delay: 400, duration: 600 }}
+  out:slide={{ duration: 700 }}
+  style="position:absolute"
+>
+  <NavBar />
+  {#key $percentage}
+    <span on:>
+      <Progress />
+    </span>
+  {/key}
+  <button on: on:click={stuff}>Click me</button>
+  <div class="container">
+    <Question {questions} on:click={submit} />
+  </div>
+
+  <Footer />
 </div>
+
+<style>
+  @media (max-width: 640px) {
+    span {
+      display: none;
+    }
+  }
+</style>

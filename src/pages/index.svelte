@@ -4,6 +4,7 @@
   import SvgComp from "./_components/SvgComp.svelte";
   import SideMenu from "./_components/SideMenu.svelte";
   import { sideMenuOpen, sideMenuClosed } from "../stores";
+  import { fade, slide } from "svelte/transition";
 
   import { metatags } from "@roxi/routify";
 
@@ -18,43 +19,49 @@
   metatags["og:image:alt"] = "";
 </script>
 
-<NavBar />
-<div class="side-menu-icon-wrapper">
-  {#if $sideMenuClosed}
-    <SvgComp
-      on:click={() => ($sideMenuOpen = true)}
-      svg={"sidemenu"}
-      active="false"
-    />
-  {/if}
-</div>
+<div
+  in:fade={{ delay: 400, duration: 600 }}
+  out:slide={{ duration: 700 }}
+  style="position:absolute"
+>
+  <NavBar />
+  <div class="side-menu-icon-wrapper">
+    {#if $sideMenuClosed}
+      <SvgComp
+        on:click={() => ($sideMenuOpen = true)}
+        svg={"sidemenu"}
+        active="false"
+      />
+    {/if}
+  </div>
 
-{#if $sideMenuOpen}
-  <SideMenu />
-{/if}
-<div class="container">
-  <h1>Home</h1>
-  <p>
-    When I started using pgp I quickly realised there wasn't a decent, fun,
-    interactive method to test that I was actually using pgp properly. Which
-    lead me to create this website. All cryptography is handled in the browser
-    using <a
-      class="external"
-      href="https://github.com/openpgpjs/openpgpjs"
-      target="_blank">OpenPGP.js</a
-    >
-  </p>
-  <p>
-    <a
-      class="external"
-      href="https://github.com/ShaneLucy/pretty-good-playground"
-      target="_blank"
-    >
-      This website is open source, feel free to view it
-    </a>
-  </p>
+  {#if $sideMenuOpen}
+    <SideMenu />
+  {/if}
+  <div class="container">
+    <h1>Home</h1>
+    <p>
+      When I started using pgp I quickly realised there wasn't a decent, fun,
+      interactive method to test that I was actually using pgp properly. Which
+      lead me to create this website. All cryptography is handled in the browser
+      using <a
+        class="external"
+        href="https://github.com/openpgpjs/openpgpjs"
+        target="_blank">OpenPGP.js</a
+      >
+    </p>
+    <p>
+      <a
+        class="external"
+        href="https://github.com/ShaneLucy/pretty-good-playground"
+        target="_blank"
+      >
+        This website is open source, feel free to view it
+      </a>
+    </p>
+  </div>
+  <Footer />
 </div>
-<Footer />
 
 <style>
   p {
