@@ -5,7 +5,7 @@
 </script>
 
 <div
-  in:fade={{ delay: 400, duration: 600 }}
+  in:fade={{ delay: 200, duration: 900 }}
   out:slide={{ duration: 700 }}
   style="position:absolute"
 >

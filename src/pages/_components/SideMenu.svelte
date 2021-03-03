@@ -3,7 +3,7 @@
   import Progress from "./Progress.svelte";
   import { sideMenuOpen, sideMenuClosed, darkMode } from "../../stores";
   import { onMount, onDestroy } from "svelte";
-  import { fade } from "svelte/transition";
+  import { fly } from "svelte/transition";
 
   onMount(() => {
     $sideMenuClosed = false;
@@ -14,7 +14,7 @@
   });
 </script>
 
-<aside transition:fade class="side-menu">
+<aside transition:fly={{ x: -500, duration: 1200 }} class="side-menu">
   <div class="container">
     <div class="header">
       <SvgComp
