@@ -26,14 +26,6 @@
     }, 1900);
   }
 
-  function test() {
-    moonDisplay = "none" ? (moonDisplay = "inline") : "none";
-  }
-
-  function test1() {
-    sunDisplay = "none" ? (sunDisplay = "inline") : "none";
-  }
-
   onMount(() => {
     moonDisplay = "inline";
     sunDisplay = "inline";
@@ -608,9 +600,9 @@
   }
 
   @media (min-width: 640px) {
-    .side-menu-icon {
+    /* .side-menu-icon {
       display: none;
-    }
+    } */
 
     .nav {
       width: 2.5vw;
