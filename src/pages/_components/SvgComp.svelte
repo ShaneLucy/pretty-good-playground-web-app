@@ -26,6 +26,14 @@
     }, 1900);
   }
 
+  function test() {
+    moonDisplay = "none" ? (moonDisplay = "inline") : "none";
+  }
+
+  function test1() {
+    sunDisplay = "none" ? (sunDisplay = "inline") : "none";
+  }
+
   onMount(() => {
     moonDisplay = "inline";
     sunDisplay = "inline";
@@ -101,7 +109,7 @@
     on:mouseover={transitionIn}
     on:mouseleave={transitionOut}
   >
-    <title>about</title>
+    <title>about PGP</title>
     {#if initialState}
       <path
         d="M4.5 6.5v-3a3 3 0 016 0v3m-8 0h10a1 1 0 011 1v6a1 1 0 01-1 1h-10a1 1 0 01-1-1v-6a1 1 0 011-1z"
@@ -148,7 +156,7 @@
     on:mouseover={transitionIn}
     on:mouseleave={transitionOut}
   >
-    <title>question</title>
+    <title>questions</title>
     {#if initialState}
       <path
         d="M7.5 12v-1.264c0-1.37.774-2.623 2-3.236a3.65 3.65 0 002-3.257C11.5 2.195 9.84.5 7.792.5h-.207c-1.335 0-2.615.53-3.56 1.474L3.5 2.5m3.5 12h1"
@@ -191,13 +199,13 @@
     width="20"
     height="20"
     on:click={callParentFunction}
-    on:click={() => (moonDisplay = "none")}
+    on:click={(sunDisplay = "inline")((moonDisplay = "none"))}
     on:mouseover={transitionIn}
     on:mouseleave={transitionOut}
     style="display:{moonDisplay}"
     class="nav"
   >
-    <title>moon</title>
+    <title>dark mode</title>
     {#if initialState}
       <path
         d="M1.66 11.362A6.5 6.5 0 007.693.502a7 7 0 11-6.031 10.86z"
@@ -245,13 +253,13 @@
     width="20"
     height="20"
     on:click={callParentFunction}
-    on:click={() => (sunDisplay = "none")}
+    on:click={() => (sunDisplay = "none")((moonDisplay = "inline"))}
     on:mouseover={transitionIn}
     on:mouseleave={transitionOut}
     style="display:{sunDisplay}"
     class="nav"
   >
-    <title>sun</title>
+    <title>light mode</title>
     {#if initialState}
       <path
         d="M7.5 1.5v-1m0 13.99v-.998m6-5.997h1m-13 0h-1m2-4.996l-1-1m12 0l-1 1m-10 9.993l-1 1m12 0l-1-1m-2-4.997a2.999 2.999 0 01-3 2.998 2.999 2.999 0 113-2.998z"
