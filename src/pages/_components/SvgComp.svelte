@@ -350,15 +350,53 @@
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     on:click={callParentFunction}
+    on:mouseover={transitionIn}
+    on:mouseleave={transitionOut}
   >
     <title>Sidebar Menu</title>
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"
-    /></svg
-  >
+
+    {#if initialState}
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    {/if}
+    {#if transitioning}
+      <path
+        transition:draw={{ duration: 1750 }}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+      <path
+        transition:fade={{ duration: 2500 }}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    {/if}
+    {#if !transitioning}
+      <path
+        transition:draw={{ duration: 1750 }}
+        class="flip"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+      <path
+        transition:fade={{ duration: 2500 }}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    {/if}
+  </svg>
 {/if}
 
 {#if svg === "x"}
@@ -369,15 +407,53 @@
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     on:click={callParentFunction}
+    on:mouseover={transitionIn}
+    on:mouseleave={transitionOut}
   >
     <title>Close Menu</title>
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M6 18L18 6M6 6l12 12"
-    /></svg
-  >
+
+    {#if initialState}
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    {/if}
+    {#if transitioning}
+      <path
+        transition:draw={{ duration: 1750 }}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      />
+      <path
+        transition:fade={{ duration: 2500 }}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    {/if}
+    {#if !transitioning}
+      <path
+        transition:draw={{ duration: 1750 }}
+        class="flip"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      />
+      <path
+        transition:fade={{ duration: 2500 }}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    {/if}
+  </svg>
 {/if}
 
 {#if svg === "bmcLight"}
