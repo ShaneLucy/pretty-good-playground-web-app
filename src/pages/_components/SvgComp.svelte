@@ -26,6 +26,16 @@
     }, 1900);
   }
 
+  function toggleSun() {
+    sunDisplay = "none";
+    moonDisplay = "inline";
+  }
+
+  function toggleMoon() {
+    sunDisplay = "inline";
+    moonDisplay = "none";
+  }
+
   onMount(() => {
     moonDisplay = "inline";
     sunDisplay = "inline";
@@ -191,7 +201,7 @@
     width="20"
     height="20"
     on:click={callParentFunction}
-    on:click={(sunDisplay = "inline")((moonDisplay = "none"))}
+    on:click={toggleMoon}
     on:mouseover={transitionIn}
     on:mouseleave={transitionOut}
     style="display:{moonDisplay}"
@@ -245,7 +255,7 @@
     width="20"
     height="20"
     on:click={callParentFunction}
-    on:click={() => (sunDisplay = "none")((moonDisplay = "inline"))}
+    on:click={toggleSun}
     on:mouseover={transitionIn}
     on:mouseleave={transitionOut}
     style="display:{sunDisplay}"
