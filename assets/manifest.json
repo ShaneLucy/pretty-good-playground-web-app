@@ -1,21 +1,17 @@
 {
   "background_color": "#ffffff",
-  "theme_color": "#E938C2",
-  "name": "Routify app",
-  "short_name": "Routify app",
+  "theme_color": "#67f063",
+  "name": "Pretty Good Playground",
+  "short_name": "PGPlayground",
   "start_url": "/",
-  "display": "standalone",
+  "display": "fullscreen",
+  "categories": ["education", "games", "productivity", "security"],
+  "description": "An app to learn about and test your knowledge on PGP",
   "icons": [
     {
-      "src": "/images/touch-icons/logo-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/images/touch-icons/logo-800.png",
-      "sizes": "800x800",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "favicon.ico",
+      "sizes": "16x16",
+      "type": "image/ico"
     }
   ]
 }

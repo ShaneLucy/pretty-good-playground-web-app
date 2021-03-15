@@ -5,6 +5,9 @@
   --dark-text: #ddd;
   --dark-border: black;
   --dark-shadow: rgb(0, 0, 0, 1);
+  --dark-error-text: #ee8484;
+  --dark-external-link: #49c3ff;
+  --dark-footer-bg: #555;
 
   --light-bg-main: white;
   --light-bg-sub: white;
@@ -12,6 +15,9 @@
   --light-text: #646464;
   --light-border: rgba(0, 0, 0, 0.4);
   --light-shadow: rgba(0, 0, 0, 0.4);
+  --light-error-text: #ee0101;
+  --light-external-link: #0875aa;
+  --light-footer-bg: gainsboro;
 
   --coloured-border: #67f063;
 }
@@ -44,7 +50,8 @@ h5 {
 h4,
 p,
 label,
-textarea {
+textarea,
+blockquote {
   font-family: "JetBrains Mono", monospace;
 }
 
@@ -60,10 +67,6 @@ a:hover {
   text-decoration: underline;
 }
 
-a:visited {
-  color: rgb(0, 80, 160);
-}
-
 label {
   display: block;
 }
@@ -76,7 +79,14 @@ textarea {
   margin: 0 0 0.5em 0;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 1.5vw;
+}
+
+input,
+button,
+select,
+textarea:hover {
+  cursor: pointer;
 }
 
 input:disabled {
@@ -85,6 +95,25 @@ input:disabled {
 
 input[type="range"] {
   height: 0;
+}
+
+.container {
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+}
+
+.side-menu-icon-wrapper {
+  width: 5vw;
+  height: 5vw;
+}
+
+@media (min-width: 640px) {
+  input,
+  button,
+  select,
+  textarea {
+    border-radius: 1vw;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,7 +131,8 @@ input[type="range"] {
 
   p,
   label,
-  textarea {
+  textarea,
+  blockquote {
     color: var(--dark-text);
   }
 
@@ -119,28 +149,21 @@ input[type="range"] {
 body.light-theme {
   background-color: var(--light-bg-main);
 }
-body.light-theme h1 {
-  color: var(--light-heading);
-}
 
-body.light-theme h2 {
-  color: var(--light-heading);
-}
-body.light-theme h3 {
-  color: var(--light-heading);
-}
-body.light-theme h4 {
-  color: var(--light-heading);
-}
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
 body.light-theme h5 {
   color: var(--light-heading);
 }
 
-body.light-theme p {
-  color: var(--light-text);
-}
-
-body.light-theme label {
+body.light-theme p,
+body.light-theme label,
+body.light-theme blockquote,
+body.light-theme .huge,
+body.light-theme .big,
+body.light-theme a {
   color: var(--light-text);
 }
 
@@ -149,7 +172,31 @@ body.light-theme textarea {
   background-color: var(--light-bg-sub);
   border-color: var(--light-border);
 }
-body.light-theme .container {
+
+body.light-theme button {
+  background-color: var(--dark-bg-heading);
+  border-color: var(--light-heading);
+  color: var(--light-heading);
+}
+
+body.light-theme button:hover {
+  background-color: var(--dark-bg-sub);
+  color: var(--dark-text);
+}
+
+body.light-theme .progress .chart-progress .back {
+  stroke: var(--light-text);
+}
+
+body.light-theme .progress .chart-progress .text {
+  fill: var(--light-heading);
+}
+
+body.light-theme .error {
+  color: var(--light-error-text);
+}
+
+body.light-theme .card {
   background-color: var(--light-bg-sub);
   box-shadow: 0px 2px 10px 2px var(--light-shadow);
 }
@@ -174,44 +221,55 @@ body.light-theme .mobile-nav {
   color: var(--light-text);
 }
 
-body.light-theme a {
-  color: var(--light-text);
+body.light-theme a.external {
+  color: var(--light-external-link);
 }
 
-body.light-theme .huge {
-  color: var(--light-text);
+body.light-theme footer {
+  background-color: var(--light-footer-bg);
 }
 
-body.light-theme .big {
-  color: var(--light-text);
+body.light-theme footer > .container > .col > .row > p {
+  color: var(--light-heading);
 }
 
+body.light-theme aside > .container > .header {
+  color: var(--light-text);
+  border-bottom: 1px solid var(--light-border);
+}
+
+body.light-theme .side-menu {
+  background-color: var(--light-bg-main);
+  box-shadow: 0px 1px 8px 1px var(--light-shadow);
+}
+
+body.light-theme .side-menu-icon-wrapper {
+  color: var(--light-heading);
+}
+
+/* dark mode globals */
 body.dark-theme {
   background-color: var(--dark-bg-main);
 }
 
-body.dark-theme h1 {
-  color: var(--dark-heading);
+body.dark-theme .error {
+  color: var(--dark-error-text);
 }
 
-body.dark-theme h2 {
-  color: var(--dark-heading);
-}
-body.dark-theme h3 {
-  color: var(--dark-heading);
-}
-body.dark-theme h4 {
-  color: var(--dark-heading);
-}
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
 body.dark-theme h5 {
   color: var(--dark-heading);
 }
 
-body.dark-theme p {
-  color: var(--dark-text);
-}
-
-body.dark-theme label {
+body.dark-theme p,
+body.dark-theme label,
+body.dark-theme blockquote,
+body.dark-theme .huge,
+body.dark-theme .big,
+body.dark-theme a {
   color: var(--dark-text);
 }
 
@@ -220,7 +278,19 @@ body.dark-theme textarea {
   background-color: var(--dark-bg-sub);
   border-color: var(--dark-border);
 }
-body.dark-theme .container {
+
+body.dark-theme button {
+  background-color: var(--dark-bg-sub);
+  border-color: var(--dark-text);
+  color: var(--dark-text);
+}
+
+body.dark-theme button:hover {
+  background-color: var(--light-bg-main);
+  color: var(--light-heading);
+}
+
+body.dark-theme .card {
   background-color: var(--dark-bg-sub);
   box-shadow: 0px 2px 10px 2px var(--dark-shadow);
 }
@@ -245,14 +315,56 @@ body.dark-theme .mobile-nav {
   color: var(--dark-text);
 }
 
-body.dark-theme a {
+body.dark-theme .progress .chart-progress .back {
+  stroke: var(--dark-heading);
+}
+
+body.dark-theme .progress .chart-progress .text {
+  fill: var(--dark-heading);
+}
+
+body.dark-theme a.external {
+  color: var(--dark-external-link);
+}
+
+body.dark-theme footer {
+  background-color: var(--dark-footer-bg);
+}
+
+body.dark-theme footer > .container > .col > .row > p {
   color: var(--dark-text);
 }
 
-body.dark-theme .huge {
-  color: var(--dark-text);
+body.dark-theme aside > .container > .header {
+  color: var(--dark-heading);
+  border-bottom: 1px solid var(--dark-border);
 }
 
-body.dark-theme .big {
-  color: var(--dark-text);
+body.dark-theme .side-menu {
+  background-color: var(--dark-bg-sub);
+  box-shadow: 0px 2px 10px 2px var(--dark-shadow);
 }
+
+body.dark-theme .side-menu-icon-wrapper {
+  color: var(--dark-heading);
+}
+
+/* Works on Firefox */
+/* htmlddd {
+  scrollbar-color: blue orange;
+} */
+
+/* Works on Chrome, Edge, and Safari */
+/* *::-webkit-scrollbar {
+  width: 12px;
+} */
+
+/* *::-webkit-scrollbar-track {
+  background: orange;
+} */
+
+/* *::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
+} */

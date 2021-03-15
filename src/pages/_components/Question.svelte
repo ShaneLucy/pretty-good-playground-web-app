@@ -1,38 +1,88 @@
 <script>
-  export let questions = [
-    {
-      name: "What is PGP",
-      answer: "ans1",
-    },
-    {
-      name: "qs2",
-      answer: "ans2",
-    },
-  ];
+  export let questions = [];
+  import { createEventDispatcher } from "svelte";
+  import { fade } from "svelte/transition";
+  import SvgComp from "./SvgComp.svelte";
+  const dispatch = createEventDispatcher();
+
+  /**
+   *
+   * @param {number}question
+   */
+  function submit(question) {
+    if (validate(question)) {
+      dispatch("click", {
+        text: question,
+      });
+    }
+  }
+
+  /**
+   *
+   * @param {number} question
+   * @return boolean
+   */
+  function validate(question) {
+    if (questions[question - 1].submittedAnswer.length === 0) {
+      questions[question - 1].error.status = true;
+      questions[question - 1].error.message = "Required";
+    }
+    if (questions[question - 1].submittedAnswer.length > 0) {
+      questions[question - 1].error.status = false;
+    }
+
+    return questions[question - 1].submittedAnswer.length > 0 ? true : false;
+  }
 </script>
 
-{#each questions as question, i}
-  {#if (i === 0, i++)}
-    <h1>Question: {i}</h1>
-  {:else}
-    <h1>Question: {i}</h1>{/if}
-  <div class="container">
-    <div class="header">
-      <h4>{question.name}</h4>
-    </div>
-    <div class="content">
-      <label for="answer">Enter your Answer to Proceed:</label>
-      <textarea name="answer" placeholder="Enter Your Answer" />
-    </div>
-    <div class="footer">
-      <p>Attempts:</p>
-      <p>Correct:</p>
-    </div>
+{#each questions as question}
+  <div class="card">
+    <h2>Question: {question.number}</h2>
+    <form>
+      <div class="header">
+        <h4>{question.name}</h4>
+      </div>
+      {#if !question.completed}
+        <div transition:fade class="content">
+          <label for="answer">Enter your Answer to Proceed:</label>
+          <div class="error-container">
+            {#if question.error.status}
+              <span transition:fade aria-live="polite" class="error"
+                >{question.error.message}</span
+              >
+            {/if}
+            {#if question.incorrect}
+              <span transition:fade aria-live="polite" class="error"
+                >Incorrect</span
+              >
+            {/if}
+          </div>
+          <textarea
+            bind:value={question.submittedAnswer}
+            name="answer"
+            on:input={validate(question.number)}
+            required
+            placeholder="Enter Your Answer"
+          />
+        </div>
+      {/if}
+    </form>
+    {#if !question.completed}
+      <div class="footer baseline">
+        <p>Attempts: {question.attempts}</p>
+        <button on:click={submit(question.number)}>Submit</button>
+      </div>
+    {:else}
+      <div class="footer center">
+        <p>Attempts: {question.attempts}</p>
+        <SvgComp svg={"tick"} active="false" />
+      </div>
+    {/if}
   </div>
 {/each}
 
 <style>
-  h1,
+  h2,
   .header,
   .content,
   .footer {
@@ -55,6 +105,24 @@
     justify-content: space-between;
   }
 
+  .baseline {
+    align-items: baseline;
+  }
+
+  .center {
+    align-items: center;
+  }
+
+  .error-container {
+    height: 5vh;
+  }
+
+  .error {
+    font-size: 1.4em;
+    padding-bottom: 2vh;
+    color: var(--light-error-text);
+  }
+
   label {
     padding-bottom: 1vh;
   }
@@ -64,9 +132,23 @@
     height: 70vw;
   }
 
-  .container {
-    margin-left: 2vw;
-    margin-right: 2vw;
+  textarea:valid {
+    border-color: var(--coloured-border);
+  }
+
+  button {
+    background-color: var(--dark-bg-heading);
+    border-color: var(--light-heading);
+    color: var(--light-heading);
+    font-size: 1.4rem;
+  }
+
+  button:hover {
+    background-color: var(--dark-bg-sub);
+    color: var(--dark-text);
+  }
+
+  .card {
     margin-top: 5vh;
     margin-bottom: 15vh;
     padding-top: 3vh;
@@ -82,7 +164,15 @@
   }
 
   @media (min-width: 640px) {
-    .container {
+    h2,
+    .header,
+    .content,
+    .footer {
+      margin-left: 2.5vw;
+      margin-right: 2.55vw;
+    }
+
+    .card {
       margin-left: 5vw;
       margin-right: 5vw;
       margin-top: 5vh;
@@ -97,12 +187,17 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    .container {
+    .card {
       background-color: var(--dark-bg-sub);
       box-shadow: 0px 2px 10px 2px var(--dark-shadow);
     }
+
     .header {
       border-bottom: 2px solid var(--dark-border);
+    }
+
+    .error {
+      color: var(--dark-error-text);
     }
   }
 </style>

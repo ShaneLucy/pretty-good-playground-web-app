@@ -1,5 +1,18 @@
+jest.mock("svelte/transition", () => ({
+  draw: () => ({
+    delay: 0,
+    duration: 1750,
+  }),
+  fade: () => ({
+    delay: 0,
+    duration: 2500,
+  }),
+}));
+
 import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/svelte";
+import { waitFor } from "@testing-library/dom";
+
 import "./matchMedia.mock";
 import ThemeToggle from "../ThemeToggle.svelte";
 
@@ -8,18 +21,22 @@ test("clicking <ThemeToggle /> toggles colour scheme & darkMode value in localst
   expect(window.localStorage.getItem("darkMode")).toBeFalsy();
 
   const { getByTitle } = render(ThemeToggle);
-  const sunIcon = getByTitle("sun");
+  const sunIcon = getByTitle("light mode");
   await fireEvent.click(sunIcon);
 
-  expect(document.body.classList.contains("dark-theme")).toBeTruthy();
-  expect(window.localStorage.getItem("darkMode")).toBeTruthy();
-  expect(window.localStorage.getItem("darkMode")).toEqual("true");
+  await waitFor(() => {
+    expect(document.body.classList.contains("dark-theme")).toBeTruthy();
+    expect(window.localStorage.getItem("darkMode")).toBeTruthy();
+    expect(window.localStorage.getItem("darkMode")).toEqual("true");
+  });
 
-  const moonIcon = getByTitle("moon");
+  const moonIcon = getByTitle("dark mode");
   await fireEvent.click(moonIcon);
 
-  expect(window.localStorage.getItem("darkMode")).toEqual("false");
-  expect(document.body.classList.contains("dark-theme")).toBeFalsy();
+  await waitFor(() => {
+    expect(window.localStorage.getItem("darkMode")).toEqual("false");
+    expect(document.body.classList.contains("dark-theme")).toBeFalsy();
+  });
 });
 
 describe("Loading component with darkMode = true set in localstorage", () => {
@@ -29,15 +46,18 @@ describe("Loading component with darkMode = true set in localstorage", () => {
 
   test("<ThemeToggle /> loads the body with 'dark-theme' applied", async () => {
     render(ThemeToggle);
-    expect(document.body.classList.contains("dark-theme")).toBeTruthy();
+    await waitFor(() => {
+      expect(document.body.classList.contains("dark-theme")).toBeTruthy();
+    });
   });
 
   test("Colour theme toggles", async () => {
     const { getByTitle } = render(ThemeToggle);
-    const moonIcon = getByTitle("moon");
+    const moonIcon = getByTitle("dark mode");
     await fireEvent.click(moonIcon);
-
-    expect(window.localStorage.getItem("darkMode")).toEqual("false");
-    expect(document.body.classList.contains("dark-theme")).toBeFalsy();
+    await waitFor(() => {
+      expect(window.localStorage.getItem("darkMode")).toEqual("false");
+      expect(document.body.classList.contains("dark-theme")).toBeFalsy();
+    });
   });
 });
