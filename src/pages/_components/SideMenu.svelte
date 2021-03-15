@@ -76,12 +76,6 @@
     word-wrap: break-word;
   }
 
-  @media (min-width: 640px) {
-    aside {
-      display: none;
-    }
-  }
-
   @media (prefers-color-scheme: dark) {
     .header {
       color: var(--dark-heading);
