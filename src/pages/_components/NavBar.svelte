@@ -2,6 +2,8 @@
   import { url, isActive } from "@roxi/routify";
   import SvgComp from "./SvgComp.svelte";
   import ThemeToggle from "./ThemeToggle.svelte";
+  import SideMenu from "./SideMenu.svelte";
+  import { sideMenuOpen, sideMenuClosed } from "../../stores";
 
   const _links = [
     ["./index", "Home"],
@@ -12,6 +14,11 @@
 
 <div class="mobile-nav">
   <div class="row">
+    <SvgComp
+      on:click={() => ($sideMenuOpen = true)}
+      svg={"sidemenu"}
+      active="false"
+    />
     {#each _links as [path, name]}
       <div class="col">
         <a class="link" class:active={$isActive(path)} href={$url(path)}>
@@ -29,6 +36,13 @@
 <aside>
   <nav>
     <div class="row">
+      <div class="col">
+        <SvgComp
+          on:click={() => ($sideMenuOpen = true)}
+          svg={"sidemenu"}
+          active="false"
+        />
+      </div>
       {#each _links as [path, name]}
         <div class="col">
           <a class="link" class:active={$isActive(path)} href={$url(path)}>
@@ -45,6 +59,10 @@
     </div>
   </nav>
 </aside>
+
+{#if $sideMenuOpen}
+  <SideMenu />
+{/if}
 
 <style>
   aside {
