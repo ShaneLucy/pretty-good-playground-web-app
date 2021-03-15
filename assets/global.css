@@ -108,10 +108,6 @@ input[type="range"] {
 }
 
 @media (min-width: 640px) {
-  .sidemenu-icon-wrapper {
-    display: none;
-  }
-
   input,
   button,
   select,
@@ -352,3 +348,23 @@ body.dark-theme .side-menu {
 body.dark-theme .side-menu-icon-wrapper {
   color: var(--dark-heading);
 }
+
+/* Works on Firefox */
+/* htmlddd {
+  scrollbar-color: blue orange;
+} */
+
+/* Works on Chrome, Edge, and Safari */
+/* *::-webkit-scrollbar {
+  width: 12px;
+} */
+
+/* *::-webkit-scrollbar-track {
+  background: orange;
+} */
+
+/* *::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
+} */
