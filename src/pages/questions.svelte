@@ -1,18 +1,9 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
   import Question from "./_components/Question.svelte";
-  import Progress from "./_components/Progress.svelte";
-  import Footer from "./_components/Footer.svelte";
-  import { percentage } from "../stores";
   import { tick } from "svelte";
   import * as openpgp from "openpgp";
   import { fade, slide } from "svelte/transition";
-
-  function stuff() {
-    percentage.update((n) => n + 0.1);
-    console.log($percentage);
-    window.localStorage.setItem("score", $percentage);
-  }
 
   let questions = [
     {
@@ -113,29 +104,9 @@
   encrypt();
 </script>
 
-<div
-  in:fade={{ delay: 200, duration: 900 }}
-  out:slide={{ duration: 700 }}
-  style="position:absolute"
->
+<div in:fade={{ duration: 900 }} out:slide={{ duration: 700 }}>
   <NavBar />
-  {#key $percentage}
-    <span on:>
-      <Progress />
-    </span>
-  {/key}
-  <button on: on:click={stuff}>Click me</button>
   <div class="container">
     <Question {questions} on:click={submit} />
   </div>
-
-  <Footer />
 </div>
-
-<style>
-  @media (max-width: 640px) {
-    span {
-      display: none;
-    }
-  }
-</style>

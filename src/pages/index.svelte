@@ -1,9 +1,5 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
-  import Footer from "./_components/Footer.svelte";
-  import SvgComp from "./_components/SvgComp.svelte";
-  import SideMenu from "./_components/SideMenu.svelte";
-  import { sideMenuOpen, sideMenuClosed } from "../stores";
   import { fade, slide } from "svelte/transition";
 
   import { metatags } from "@roxi/routify";
@@ -19,25 +15,9 @@
   metatags["og:image:alt"] = "";
 </script>
 
-<div
-  in:fade={{ delay: 200, duration: 900 }}
-  out:slide={{ duration: 700 }}
-  style="position:absolute"
->
+<div in:fade={{ duration: 900 }} out:slide={{ duration: 700 }}>
   <NavBar />
-  <div class="side-menu-icon-wrapper">
-    {#if $sideMenuClosed}
-      <SvgComp
-        on:click={() => ($sideMenuOpen = true)}
-        svg={"sidemenu"}
-        active="false"
-      />
-    {/if}
-  </div>
 
-  {#if $sideMenuOpen}
-    <SideMenu />
-  {/if}
   <div class="container">
     <h1>Home</h1>
     <p>
@@ -60,7 +40,6 @@
       </a>
     </p>
   </div>
-  <Footer />
 </div>
 
 <style>

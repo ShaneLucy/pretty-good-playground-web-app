@@ -1,14 +1,9 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
-  import Footer from "./_components/Footer.svelte";
   import { fade, slide } from "svelte/transition";
 </script>
 
-<div
-  in:fade={{ delay: 200, duration: 900 }}
-  out:slide={{ duration: 700 }}
-  style="position:absolute"
->
+<div in:fade={{ duration: 900 }} out:slide={{ duration: 700 }}>
   <NavBar />
   <div class="container">
     <h1>Pretty Good Privacy</h1>
@@ -47,5 +42,4 @@
       any kind of text - in particular e-mails - as well as managing keys.
     </blockquote>
   </div>
-  <Footer />
 </div>
