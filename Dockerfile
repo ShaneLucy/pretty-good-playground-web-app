@@ -8,7 +8,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 USER node
 
-COPY --chown=node:node package*.json /app/
+COPY --chown=node:node / /app/
 
 RUN npm install && npm run lint && npm run test
 
