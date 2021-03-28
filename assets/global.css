@@ -107,6 +107,12 @@ input[type="range"] {
   height: 5vw;
 }
 
+@media screen and (max-width: 640px) {
+  .container {
+    padding-bottom: 12.5vh;
+  }
+}
+
 @media (min-width: 640px) {
   input,
   button,
@@ -349,22 +355,9 @@ body.dark-theme .side-menu-icon-wrapper {
   color: var(--dark-heading);
 }
 
-/* Works on Firefox */
-/* htmlddd {
-  scrollbar-color: blue orange;
-} */
-
-/* Works on Chrome, Edge, and Safari */
-/* *::-webkit-scrollbar {
-  width: 12px;
-} */
-
-/* *::-webkit-scrollbar-track {
-  background: orange;
-} */
-
-/* *::-webkit-scrollbar-thumb {
-  background-color: blue;
-  border-radius: 20px;
-  border: 3px solid orange;
-} */
+@media (min-width: 1440px) {
+  .container {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+}
