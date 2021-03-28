@@ -43,3 +43,26 @@
     </blockquote>
   </div>
 </div>
+
+<style>
+  h1 {
+    padding-top: 7.5vh;
+  }
+
+  @media (min-width: 780px) {
+    h1 {
+      align-self: flex-start;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    blockquote {
+      width: 80ch;
+      line-height: 1.3;
+    }
+  }
+</style>
