@@ -127,12 +127,9 @@
 
   @media (min-width: 640px) {
     nav {
-      margin: 32px;
-      border-radius: 3vw;
       box-shadow: 0px 1px 8px 1px var(--light-shadow);
       display: inline-block;
       position: relative;
-      width: max-content;
     }
 
     .link {
