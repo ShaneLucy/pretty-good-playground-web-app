@@ -36,13 +36,17 @@
 </script>
 
 {#each questions as question}
-  <div class="card">
+  <div
+    class="card"
+    class:completed-rest={question.completed && question.number > 1}
+    class:completed={question.completed}
+  >
     <h2>Question: {question.number}</h2>
-    <form>
-      <div class="header">
-        <h4>{question.name}</h4>
-      </div>
-      {#if !question.completed}
+    {#if !question.completed}
+      <form>
+        <div class="header">
+          <h4>{question.name}</h4>
+        </div>
         <div transition:fade class="content">
           <label for="answer">Enter your Answer to Proceed:</label>
           <div class="error-container">
@@ -65,8 +69,8 @@
             placeholder="Enter Your Answer"
           />
         </div>
-      {/if}
-    </form>
+      </form>
+    {/if}
     {#if !question.completed}
       <div class="footer baseline">
         <p>Attempts: {question.attempts}</p>
@@ -185,7 +189,11 @@
       height: 40vw;
     }
   }
+  /* @media (min-width: 640px) {
+    .completed-rest {
 
+    }
+} */
   @media (prefers-color-scheme: dark) {
     .card {
       background-color: var(--dark-bg-sub);
@@ -199,5 +207,15 @@
     .error {
       color: var(--dark-error-text);
     }
+  }
+
+  .completed {
+    margin-bottom: 0;
+    padding-top: 0.4rem;
+    padding-bottom: 4vh;
+  }
+
+  .completed-rest {
+    margin-top: -4rem;
   }
 </style>
