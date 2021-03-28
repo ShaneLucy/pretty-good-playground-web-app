@@ -59,6 +59,10 @@ textarea {
   caret-color: var(--coloured-border);
 }
 
+textarea:focus {
+  outline: none;
+}
+
 a {
   text-decoration: none;
 }
