@@ -159,10 +159,10 @@
     padding-bottom: 3vh;
     border-radius: 1.5vw;
     box-shadow: 0px 1px 8px 1px var(--light-shadow);
-    border-right-width: 0.5vw;
+    border-right-width: 0.2rem;
     border-right-style: solid;
     border-right-color: var(--coloured-border);
-    border-bottom-width: 0.5vw;
+    border-bottom-width: 0.2rem;
     border-bottom-style: solid;
     border-bottom-color: var(--coloured-border);
   }
@@ -189,11 +189,7 @@
       height: 40vw;
     }
   }
-  /* @media (min-width: 640px) {
-    .completed-rest {
 
-    }
-} */
   @media (prefers-color-scheme: dark) {
     .card {
       background-color: var(--dark-bg-sub);
