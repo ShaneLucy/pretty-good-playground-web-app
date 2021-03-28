@@ -35,11 +35,6 @@
 </div>
 
 <style>
-  .progress {
-    position: sticky;
-    bottom: 0;
-  }
-
   .progress .chart-progress {
     padding: 10px;
   }
