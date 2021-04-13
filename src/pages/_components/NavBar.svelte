@@ -33,41 +33,36 @@
   </div>
 </div>
 
-<aside>
-  <nav>
-    <div class="row">
-      <div class="col">
-        <SvgComp
-          on:click={() => ($sideMenuOpen = true)}
-          svg={"sidemenu"}
-          active="false"
-        />
-      </div>
-      {#each _links as [path, name]}
-        <div class="col">
-          <a class="link" class:active={$isActive(path)} href={$url(path)}>
-            {name}
-          </a>
-          <a class="link pt-2" class:active={$isActive(path)} href={$url(path)}>
-            <SvgComp svg={path} active={$isActive(path)} />
-          </a>
-        </div>
-      {/each}
-      <div class="col">
-        <ThemeToggle />
-      </div>
+<nav>
+  <div class="row">
+    <div class="col">
+      <SvgComp
+        on:click={() => ($sideMenuOpen = true)}
+        svg={"sidemenu"}
+        active="false"
+      />
     </div>
-  </nav>
-</aside>
+    {#each _links as [path, name]}
+      <div class="col">
+        <a class="link" class:active={$isActive(path)} href={$url(path)}>
+          {name}
+        </a>
+        <a class="link pt-2" class:active={$isActive(path)} href={$url(path)}>
+          <SvgComp svg={path} active={$isActive(path)} />
+        </a>
+      </div>
+    {/each}
+    <div class="col">
+      <ThemeToggle />
+    </div>
+  </div>
+</nav>
 
 {#if $sideMenuOpen}
   <SideMenu />
 {/if}
 
 <style>
-  aside {
-    text-align: center;
-  }
   nav {
     background: var(--light-bg-main);
   }
@@ -113,7 +108,8 @@
   nav {
     display: none;
     width: 100%;
-    padding: 16px;
+    padding-top: 1.3rem;
+    padding-bottom: 1.2rem;
     z-index: 1;
   }
 
