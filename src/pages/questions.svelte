@@ -107,7 +107,7 @@
 {/if}
 <div in:fade={{ duration: 900 }} out:slide={{ duration: 700 }}>
   <NavBar />
-  <div class="container">
+  <main class="container">
     <Question {questions} on:click={submit} />
-  </div>
+  </main>
 </div>

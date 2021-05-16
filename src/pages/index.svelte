@@ -18,7 +18,7 @@
 <div in:fade={{ duration: 900 }} out:slide={{ duration: 700 }}>
   <NavBar />
 
-  <div class="container">
+  <main class="container">
     <h1>Home</h1>
     <p>
       When I started using pgp I quickly realised there wasn't a decent, fun,
@@ -41,7 +41,7 @@
         This website is open source, feel free to view it
       </a>
     </p>
-  </div>
+  </main>
 </div>
 
 <style>
