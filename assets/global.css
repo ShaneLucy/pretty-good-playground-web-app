@@ -1,28 +1,62 @@
-:root {
-  --dark-bg-main: #373232;
-  --dark-bg-sub: #444;
-  --dark-heading: #ddd;
-  --dark-text: #ddd;
-  --dark-border: black;
-  --dark-shadow: rgb(0, 0, 0, 1);
-  --dark-error-text: #ee8484;
-  --dark-external-link: #49c3ff;
-  --dark-footer-bg: #555;
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 
-  --light-bg-main: white;
-  --light-bg-sub: white;
-  --light-heading: black;
-  --light-text: #646464;
-  --light-border: rgba(0, 0, 0, 0.4);
-  --light-shadow: rgba(0, 0, 0, 0.4);
-  --light-error-text: #ee0101;
-  --light-external-link: #0875aa;
-  --light-footer-bg: gainsboro;
-
-  --coloured-border: #67f063;
+body {
+  --bg-main: white;
+  --bg-sub: white;
+  --heading: black;
+  --text: #646464;
+  --border: rgba(0, 0, 0, 0.4);
+  --shadow: rgba(0, 0, 0, 0.4);
+  --error-text: #ee0101;
+  --error-bg: #ee0101;
+  --external-link: #0875aa;
+  --footer-bg: gainsboro;
+  --border: #67f063;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+body.dark-theme {
+  --bg-main: #373232;
+  --bg-sub: #444;
+  --heading: #ddd;
+  --text: #ddd;
+  --border: black;
+  --shadow: rgb(0, 0, 0, 1);
+  --error-text: #ee8484;
+  --error-background: rgb(153, 36, 36);
+  --external-link: #49c3ff;
+  --footer-bg: #555;
+  --border: rgb(27, 117, 49);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg-main: #373232;
+    --bg-sub: #444;
+    --heading: #ddd;
+    --text: #ddd;
+    --border: black;
+    --shadow: rgb(0, 0, 0, 1);
+    --error-text: #ee8484;
+    --error-background: rgb(153, 36, 36);
+    --external-link: #49c3ff;
+    --footer-bg: #555;
+    --border: rgb(27, 117, 49);
+  }
+
+  body.light-theme {
+    --bg-main: white;
+    --bg-sub: white;
+    --heading: black;
+    --text: #646464;
+    --border: rgba(0, 0, 0, 0.4);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --error-text: #ee0101;
+    --error-bg: #ee0101;
+    --external-link: #0875aa;
+    --footer-bg: gainsboro;
+    --border: #67f063;
+  }
+}
 
 html,
 body {
@@ -37,6 +71,7 @@ body {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background-color: var(--bg-main);
 }
 
 h1,
@@ -44,7 +79,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: var(--light-heading);
+  color: var(--heading);
 }
 
 h4,
@@ -55,20 +90,26 @@ blockquote {
   font-family: "JetBrains Mono", monospace;
 }
 
-textarea {
-  caret-color: var(--coloured-border);
-}
-
-textarea:focus {
-  outline: none;
+p,
+label,
+blockquote,
+.huge,
+.big,
+a {
+  color: var(--text);
 }
 
 a {
   text-decoration: none;
 }
 
-a:hover {
+a.external {
   text-decoration: underline;
+  color: var(--external-link);
+}
+
+a.external:hover {
+  text-decoration: none;
 }
 
 label {
@@ -83,7 +124,7 @@ textarea {
   margin: 0 0 0.5em 0;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 1.5vw;
+  border-radius: 0.5rem;
 }
 
 input,
@@ -102,266 +143,30 @@ input[type="range"] {
 }
 
 .container {
-  margin-left: 7.5vw;
-  margin-right: 7.5vw;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
-.side-menu-icon-wrapper {
-  width: 5vw;
-  height: 5vw;
+.error {
+  color: var(--error-text);
 }
 
 @media screen and (max-width: 640px) {
   .container {
-    padding-bottom: 12.5vh;
+    padding-bottom: 8rem;
   }
 }
 
 @media (min-width: 640px) {
-  input,
-  button,
-  select,
-  textarea {
-    border-radius: 1vw;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--dark-bg-main);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    color: var(--dark-heading);
-  }
-
-  p,
-  label,
-  textarea,
-  blockquote {
-    color: var(--dark-text);
-  }
-
-  input,
-  button,
-  select,
-  textarea {
-    color: var(--dark-text);
-    background-color: var(--dark-bg-sub);
-    border-color: var(--dark-border);
-  }
-}
-
-body.light-theme {
-  background-color: var(--light-bg-main);
-}
-
-body.light-theme h1,
-body.light-theme h2,
-body.light-theme h3,
-body.light-theme h4,
-body.light-theme h5 {
-  color: var(--light-heading);
-}
-
-body.light-theme p,
-body.light-theme label,
-body.light-theme blockquote,
-body.light-theme .huge,
-body.light-theme .big,
-body.light-theme a {
-  color: var(--light-text);
-}
-
-body.light-theme textarea {
-  color: var(--light-text);
-  background-color: var(--light-bg-sub);
-  border-color: var(--light-border);
-}
-
-body.light-theme button {
-  background-color: var(--dark-bg-heading);
-  border-color: var(--light-heading);
-  color: var(--light-heading);
-}
-
-body.light-theme button:hover {
-  background-color: var(--dark-bg-sub);
-  color: var(--dark-text);
-}
-
-body.light-theme .progress .chart-progress .back {
-  stroke: var(--light-text);
-}
-
-body.light-theme .progress .chart-progress .text {
-  fill: var(--light-heading);
-}
-
-body.light-theme .error {
-  color: var(--light-error-text);
-}
-
-body.light-theme .card {
-  background-color: var(--light-bg-sub);
-  box-shadow: 0px 2px 10px 2px var(--light-shadow);
-}
-
-body.light-theme .header {
-  border-bottom: 2px solid var(--light-border);
-}
-
-body.light-theme nav {
-  background-color: var(--light-bg-main);
-  color: var(--light-text);
-  box-shadow: 0px 2px 10px 2px var(--light-shadow);
-}
-
-body.light-theme .show {
-  background-color: var(--light-bg-main);
-  color: var(--light-text);
-}
-
-body.light-theme .mobile-nav {
-  background-color: var(--light-bg-main);
-  color: var(--light-text);
-}
-
-body.light-theme a.external {
-  color: var(--light-external-link);
-}
-
-body.light-theme footer {
-  background-color: var(--light-footer-bg);
-}
-
-body.light-theme footer > .container > .col > .row > p {
-  color: var(--light-heading);
-}
-
-body.light-theme aside > .container > .header {
-  color: var(--light-text);
-  border-bottom: 1px solid var(--light-border);
-}
-
-body.light-theme .side-menu {
-  background-color: var(--light-bg-main);
-  box-shadow: 0px 1px 8px 1px var(--light-shadow);
-}
-
-body.light-theme .side-menu-icon-wrapper {
-  color: var(--light-heading);
-}
-
-/* dark mode globals */
-body.dark-theme {
-  background-color: var(--dark-bg-main);
-}
-
-body.dark-theme .error {
-  color: var(--dark-error-text);
-}
-
-body.dark-theme h1,
-body.dark-theme h2,
-body.dark-theme h3,
-body.dark-theme h4,
-body.dark-theme h5 {
-  color: var(--dark-heading);
-}
-
-body.dark-theme p,
-body.dark-theme label,
-body.dark-theme blockquote,
-body.dark-theme .huge,
-body.dark-theme .big,
-body.dark-theme a {
-  color: var(--dark-text);
-}
-
-body.dark-theme textarea {
-  color: var(--dark-text);
-  background-color: var(--dark-bg-sub);
-  border-color: var(--dark-border);
-}
-
-body.dark-theme button {
-  background-color: var(--dark-bg-sub);
-  border-color: var(--dark-text);
-  color: var(--dark-text);
-}
-
-body.dark-theme button:hover {
-  background-color: var(--light-bg-main);
-  color: var(--light-heading);
-}
-
-body.dark-theme .card {
-  background-color: var(--dark-bg-sub);
-  box-shadow: 0px 2px 10px 2px var(--dark-shadow);
-}
-
-body.dark-theme .header {
-  border-bottom: 2px solid var(--dark-border);
-}
-
-body.dark-theme nav {
-  background-color: var(--dark-bg-main);
-  color: var(--dark-text);
-  box-shadow: 0px 2px 10px 2px var(--dark-shadow);
-}
-
-body.dark-theme .show {
-  background-color: var(--dark-bg-main);
-  color: var(--dark-text);
-}
-
-body.dark-theme .mobile-nav {
-  background-color: var(--dark-bg-main);
-  color: var(--dark-text);
-}
-
-body.dark-theme .progress .chart-progress .back {
-  stroke: var(--dark-heading);
-}
-
-body.dark-theme .progress .chart-progress .text {
-  fill: var(--dark-heading);
-}
-
-body.dark-theme a.external {
-  color: var(--dark-external-link);
-}
-
-body.dark-theme footer {
-  background-color: var(--dark-footer-bg);
-}
-
-body.dark-theme footer > .container > .col > .row > p {
-  color: var(--dark-text);
-}
-
-body.dark-theme aside > .container > .header {
-  color: var(--dark-heading);
-  border-bottom: 1px solid var(--dark-border);
-}
-
-body.dark-theme .side-menu {
-  background-color: var(--dark-bg-sub);
-  box-shadow: 0px 2px 10px 2px var(--dark-shadow);
-}
-
-body.dark-theme .side-menu-icon-wrapper {
-  color: var(--dark-heading);
-}
-
-@media (min-width: 1440px) {
   .container {
-    margin-left: 15vw;
-    margin-right: 15vw;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .container {
+    margin-left: 25rem;
+    margin-right: 25rem;
   }
 }

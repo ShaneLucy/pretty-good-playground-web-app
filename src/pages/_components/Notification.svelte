@@ -61,7 +61,7 @@
 
   div > h4,
   div > p {
-    color: var(--light-heading);
+    color: var(--heading);
     margin: 1rem;
   }
 

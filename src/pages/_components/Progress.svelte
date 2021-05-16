@@ -40,12 +40,12 @@
   }
 
   .back {
-    stroke: var(--light-text);
+    stroke: var(--text);
     stroke-width: 5;
   }
 
   .front {
-    stroke: var(--coloured-border);
+    stroke: var(--border);
     stroke-width: 5;
     stroke-linecap: round;
     stroke-dasharray: 286;
@@ -55,7 +55,7 @@
 
   .text {
     font-weight: bold;
-    fill: var(--light-heading);
+    fill: var(--heading);
   }
 
   .front {
@@ -73,16 +73,6 @@
       to {
         stroke-dasharray: 0, 0;
       }
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .text {
-      fill: var(--dark-heading);
-    }
-
-    .back {
-      stroke: var(--dark-heading);
     }
   }
 </style>

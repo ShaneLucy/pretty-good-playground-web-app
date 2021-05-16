@@ -686,10 +686,6 @@
   }
 
   @media (min-width: 640px) {
-    /* .side-menu-icon {
-      display: none;
-    } */
-
     .nav {
       width: 2.5vw;
       height: 2.5vw;

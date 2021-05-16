@@ -27,7 +27,8 @@
       using <a
         class="external"
         href="https://github.com/openpgpjs/openpgpjs"
-        target="_blank">OpenPGP.js</a
+        target="_blank"
+        rel="noreferrer">OpenPGP.js</a
       >
     </p>
     <p>
@@ -35,6 +36,7 @@
         class="external"
         href="https://github.com/ShaneLucy/pretty-good-playground"
         target="_blank"
+        rel="noreferrer"
       >
         This website is open source, feel free to view it
       </a>
@@ -45,16 +47,5 @@
 <style>
   p {
     line-height: 1.3;
-  }
-
-  a.external {
-    text-decoration: underline;
-    color: var(--light-external-link);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    a.external {
-      color: var(--dark-external-link);
-    }
   }
 </style>

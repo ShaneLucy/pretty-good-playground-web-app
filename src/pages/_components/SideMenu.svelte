@@ -1,7 +1,7 @@
 <script>
   import SvgComp from "./SvgComp.svelte";
   import Progress from "./Progress.svelte";
-  import { sideMenuOpen, sideMenuClosed, darkMode } from "../../stores";
+  import { sideMenuOpen, sideMenuClosed } from "../../stores";
   import { onMount, onDestroy } from "svelte";
   import { fly } from "svelte/transition";
 
@@ -37,7 +37,7 @@
       </div>
       <div class="col">
         <a href="https://www.buymeacoffee.com/shanelucy" target="_blank">
-          {#if $darkMode}
+          {#if window.localStorage.getItem("darkMode")}
             <SvgComp svg={"bmcDark"} active="false" />
           {:else}
             <SvgComp svg={"bmcLight"} active="false" />
@@ -51,8 +51,8 @@
 
 <style>
   .header {
-    color: var(--light-text);
-    border-bottom: 1px solid var(--light-border);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
   }
 
   .content {
@@ -65,27 +65,15 @@
     padding-bottom: 3rem;
     position: absolute;
     z-index: 10;
-    background-color: var(--light-bg-main);
+    background-color: var(--bg-main);
     height: max-content;
     width: 95vw;
     border-radius: 3rem;
-    box-shadow: 0px 1px 8px 1px var(--light-shadow);
+    box-shadow: 0px 1px 8px 1px var(--shadow);
   }
 
   .col {
     padding-top: 1.5rem;
     word-wrap: break-word;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .header {
-      color: var(--dark-heading);
-      border-bottom: 1px solid var(--dark-border);
-    }
-
-    aside {
-      background-color: var(--dark-bg-sub);
-      box-shadow: 0px 2px 10px 2px var(--dark-shadow);
-    }
   }
 </style>

@@ -95,7 +95,7 @@
 
   .header {
     justify-self: start;
-    border-bottom: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--border);
   }
 
   .content {
@@ -123,7 +123,7 @@
 
   .error {
     font-size: 1.4em;
-    color: var(--light-error-text);
+    color: var(--error-text);
   }
 
   /* label {
@@ -133,26 +133,35 @@
   textarea {
     width: 100%;
     height: auto;
+
+    color: var(--text);
+    background-color: var(--bg-sub);
+    border-color: var(--border);
+    caret-color: var(--border);
+  }
+
+  textarea:focus {
+    outline: none;
   }
 
   textarea:invalid {
-    border-color: var(--light-error-text);
+    border-color: var(--error-text);
   }
 
   textarea:valid {
-    border-color: var(--coloured-border);
+    border-color: var(--border);
   }
 
   button {
-    background-color: var(--dark-bg-heading);
-    border-color: var(--light-heading);
-    color: var(--light-heading);
+    background-color: var(--bg-heading);
+    border-color: var(--heading);
+    color: var(--heading);
     font-size: 1.3rem;
   }
 
   button:hover {
-    background-color: var(--dark-bg-sub);
-    color: var(--dark-text);
+    background-color: var(--bg-main);
+    color: var(--heading);
   }
 
   .card {
@@ -161,13 +170,14 @@
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
     border-radius: 0.5rem;
-    box-shadow: 0px 1px 8px 1px var(--light-shadow);
+    box-shadow: 0px 1px 8px 1px var(--shadow);
     border-right-width: 0.2rem;
     border-right-style: solid;
-    border-right-color: var(--coloured-border);
+    border-right-color: var(--border);
     border-bottom-width: 0.2rem;
     border-bottom-style: solid;
-    border-bottom-color: var(--coloured-border);
+    border-bottom-color: var(--border);
+    background-color: var(--bg-sub);
   }
 
   @media (min-width: 640px) {
@@ -182,34 +192,11 @@
     .card {
       margin: 3.5rem;
       border-radius: 1rem;
-      box-shadow: 0px 1px 8px 1px var(--light-shadow);
+      box-shadow: 0px 1px 8px 1px var(--shadow);
     }
 
     textarea {
       height: auto;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    textarea:invalid {
-      border-color: var(--dark-error-text);
-    }
-
-    textarea:valid {
-      border-color: var(--dark-border);
-    }
-
-    .card {
-      background-color: var(--dark-bg-sub);
-      box-shadow: 0px 2px 10px 2px var(--dark-shadow);
-    }
-
-    .header {
-      border-bottom: 2px solid var(--dark-border);
-    }
-
-    .error {
-      color: var(--dark-error-text);
     }
   }
 
