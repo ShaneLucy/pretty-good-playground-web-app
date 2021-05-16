@@ -160,8 +160,7 @@
   }
 
   button:hover {
-    background-color: var(--bg-main);
-    color: var(--heading);
+    transform: scale(1.4);
   }
 
   .card {
