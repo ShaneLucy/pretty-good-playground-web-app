@@ -56,23 +56,24 @@
   }
 
   .content {
-    padding-top: 2.5vh;
+    padding-top: 1rem;
   }
 
   aside {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    margin-left: 0.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     position: absolute;
     z-index: 10;
     background-color: var(--light-bg-main);
     height: max-content;
-    width: 80vw;
-    border-radius: 3vw;
+    width: 95vw;
+    border-radius: 3rem;
     box-shadow: 0px 1px 8px 1px var(--light-shadow);
   }
 
   .col {
-    padding-top: 2.5vh;
+    padding-top: 1.5rem;
     word-wrap: break-word;
   }
 

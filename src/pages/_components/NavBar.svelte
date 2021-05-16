@@ -12,6 +12,9 @@
   ];
 </script>
 
+{#if $sideMenuOpen}
+  <SideMenu />
+{/if}
 <div class="mobile-nav">
   <div class="row">
     <SvgComp
@@ -58,10 +61,6 @@
   </div>
 </nav>
 
-{#if $sideMenuOpen}
-  <SideMenu />
-{/if}
-
 <style>
   nav {
     background: var(--light-bg-main);
@@ -81,9 +80,8 @@
     width: 100vw;
     height: max-content;
     font-size: 1em;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     box-shadow: 0px 5px 20px 5px var(--light-shadow);
     display: block;
     bottom: 0;
@@ -118,7 +116,7 @@
   }
 
   .pt-2 {
-    padding-top: 2vh;
+    padding-top: 1rem;
   }
 
   @media (min-width: 640px) {
@@ -130,7 +128,7 @@
 
     .link {
       display: inline-block;
-      padding-bottom: 2vh;
+      padding-bottom: 1rem;
     }
 
     .mobile-nav {
@@ -138,13 +136,13 @@
     }
 
     .pt-2 {
-      padding-top: 0vh;
+      padding-top: 0;
     }
 
-    .col {
-      margin-right: 5vw;
-      margin-left: 5vw;
-    }
+    /* .col {
+      margin-right: 2.5rem;
+      margin-left: 2.5rem;
+    } */
   }
 
   @media (prefers-color-scheme: dark) {

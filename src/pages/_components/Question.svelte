@@ -70,8 +70,6 @@
           />
         </div>
       </form>
-    {/if}
-    {#if !question.completed}
       <div class="footer baseline">
         <p>Attempts: {question.attempts}</p>
         <button on:click={submit(question.number)}>Submit</button>
@@ -90,9 +88,9 @@
   .header,
   .content,
   .footer {
-    margin-left: 5vw;
-    margin-right: 5vw;
-    margin-bottom: 2vh;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
   }
 
   .header {
@@ -101,7 +99,7 @@
   }
 
   .content {
-    padding-top: 2vh;
+    padding-top: 0.5rem;
   }
 
   .footer {
@@ -118,22 +116,27 @@
   }
 
   .error-container {
-    height: 5vh;
+    height: 2rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   .error {
     font-size: 1.4em;
-    padding-bottom: 2vh;
     color: var(--light-error-text);
   }
 
-  label {
+  /* label {
     padding-bottom: 1vh;
-  }
+  } */
 
   textarea {
     width: 100%;
-    height: 70vw;
+    height: auto;
+  }
+
+  textarea:invalid {
+    border-color: var(--light-error-text);
   }
 
   textarea:valid {
@@ -144,7 +147,7 @@
     background-color: var(--dark-bg-heading);
     border-color: var(--light-heading);
     color: var(--light-heading);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   button:hover {
@@ -153,11 +156,11 @@
   }
 
   .card {
-    margin-top: 5vh;
-    margin-bottom: 15vh;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
-    border-radius: 1.5vw;
+    margin-top: 2rem;
+    margin-bottom: 7rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-radius: 0.5rem;
     box-shadow: 0px 1px 8px 1px var(--light-shadow);
     border-right-width: 0.2rem;
     border-right-style: solid;
@@ -172,25 +175,30 @@
     .header,
     .content,
     .footer {
-      margin-left: 2.5vw;
-      margin-right: 2.55vw;
+      margin-left: 2rem;
+      margin-right: 2rem;
     }
 
     .card {
-      margin-left: 5vw;
-      margin-right: 5vw;
-      margin-top: 5vh;
-      margin-bottom: 5vh;
-      border-radius: 1vw;
+      margin: 3.5rem;
+      border-radius: 1rem;
       box-shadow: 0px 1px 8px 1px var(--light-shadow);
     }
 
     textarea {
-      height: 40vw;
+      height: auto;
     }
   }
 
   @media (prefers-color-scheme: dark) {
+    textarea:invalid {
+      border-color: var(--dark-error-text);
+    }
+
+    textarea:valid {
+      border-color: var(--dark-border);
+    }
+
     .card {
       background-color: var(--dark-bg-sub);
       box-shadow: 0px 2px 10px 2px var(--dark-shadow);
@@ -208,7 +216,7 @@
   .completed {
     margin-bottom: 0;
     padding-top: 0.4rem;
-    padding-bottom: 4vh;
+    padding-bottom: 4rem;
   }
 
   .completed-rest {

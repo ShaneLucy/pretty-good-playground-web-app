@@ -1,8 +1,11 @@
 <script>
   import NavBar from "./_components/NavBar.svelte";
   import Question from "./_components/Question.svelte";
-  import { tick } from "svelte";
-  import * as openpgp from "openpgp";
+  import { tick, onMount } from "svelte";
+  import Notification from "./_components/Notification.svelte";
+  // import { publicKey, privateKey } from "../stores";
+  import { generateKey } from "../crypto";
+
   import { fade, slide } from "svelte/transition";
 
   let questions = [
@@ -60,6 +63,31 @@
     },
   ];
 
+  const errors = {
+    keyGenerate: "",
+  };
+
+  onMount(() => {
+    generateKey("brainpoolP512r11", "PGPTest", "pgptest@genuinemail.com").catch(
+      (e) => {
+        errors.keyGenerate = e;
+        console.log(e);
+      }
+    );
+  });
+
+  // let pubKey, privKey;
+
+  // publicKey.subscribe((value) => {
+  //   pubKey = value;
+  // });
+
+  // privateKey.subscribe((value) => {
+  //   privKey = value;
+  // });
+
+  // console.log(privKey);
+
   async function submit(event) {
     console.log(event.detail.text);
 
@@ -72,38 +100,11 @@
         (questions[event.detail.text - 1].incorrect = false))
       : (questions[event.detail.text - 1].incorrect = true);
   }
-  const encrypt = async () => {
-    const key = await openpgp.generateKey({
-      curve: "brainpoolP512r1",
-      userIds: [{ name: "Test", email: "test@test.com" }],
-    });
-    console.log(key);
-    // // put keys in backtick (``) to avoid errors caused by spaces or tabs
-    // const publicKeyArmored = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-    // ...
-    // -----END PGP PUBLIC KEY BLOCK-----`;
-    // const privateKeyArmored = `-----BEGIN PGP PRIVATE KEY BLOCK-----
-    // ...
-    // -----END PGP PRIVATE KEY BLOCK-----`; // encrypted private key
-    // const passphrase = `yourPassphrase`; // what the private key is encrypted with
-    // // const privateKey = await openpgp.readArmored(privateKeyArmored);
-    // await privateKey.decrypt(passphrase);
-    // const encrypted = await openpgp.encrypt({
-    //   message: openpgp.Message.fromText("Hello, World!"), // input as Message object
-    //   publicKeys: await openpgp.readArmoredKey(publicKeyArmored), // for encryption
-    //   privateKeys: privateKey, // for signing (optional)
-    // });
-    // console.log(encrypted); // '-----BEGIN PGP MESSAGE ... END PGP MESSAGE-----'
-    // const { data: decrypted } = await openpgp.decrypt({
-    //   message: await openpgp.readArmoredMessage(encrypted), // parse armored message
-    //   publicKeys: await openpgp.readArmoredKey(publicKeyArmored), // for verification (optional)
-    //   privateKeys: privateKey, // for decryption
-    // });
-    // console.log(decrypted);
-  };
-  encrypt();
 </script>
 
+{#if errors.keyGenerate}
+  <Notification status={"Error"} message={errors.keyGenerate} />
+{/if}
 <div in:fade={{ duration: 900 }} out:slide={{ duration: 700 }}>
   <NavBar />
   <div class="container">
