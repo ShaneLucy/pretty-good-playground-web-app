@@ -1,7 +1,0 @@
-rollup.config.js
-/dist
-/node_modules
-sw.js
-ServiceWorker.svelte
-_layout*
-_fallback*
