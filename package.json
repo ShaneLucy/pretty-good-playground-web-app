@@ -6,16 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "database-setup": "node lib/database/initialisation/index.mjs"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "next": "12.1.4",
+    "pg": "^8.7.3",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
   "devDependencies": {
-    "@types/node": "17.0.23",
+    "@types/pg": "^8.6.5",
     "@types/react": "18.0.0",
     "@types/react-dom": "18.0.0",
     "eslint": "8.13.0",
